@@ -1,0 +1,36 @@
+<!doctype html>
+<head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=5"
+    />
+    <link rel="canonical" href="https://alexkaufman.live" />
+    <meta
+        name="alexkaufman.live"
+        content="Standup comedian / Former physicist"
+    />
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    />
+</head>
+<body class="{{ body_class }}">
+    <header>
+        {{% block header %}}
+        <a class="title" href="/"><h1>{{ title }}</h1></a>
+        <nav>
+            {{% block nav %}}
+            <p>
+                <a href="/">Home</a>
+                <a href="/shows/">Shows</a>
+                <a href="/blog/">Blog</a>
+            </p>
+            {{% endblock %}}
+        </nav>
+        {{% endblock %}}
+    </header>
+    <main>{{% block main %}} {{% endblock %}}</main>
+    <footer>{{% block footer %}} {{% endblock %}}</footer>
+</body>
