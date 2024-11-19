@@ -5,7 +5,7 @@ _Standup Comedian / Former Physicist_
 # Upcoming Shows
 
 {% for show in upcoming_shows %}
-<a href="{{ show.slug }}">
+<a href="{{ show.link }}">
 
 <h2>{{ show['title'] }}</h2>
 </a>

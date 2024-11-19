@@ -4,6 +4,7 @@ import os
 from flask import Flask
 from flask import render_template, render_template_string, current_app
 import pathlib
+from flask.helpers import redirect
 import frontmatter
 import mistune
 
@@ -61,7 +62,7 @@ def load_shows():
 
     shows_path = pathlib.Path(current_app.root_path) / "content/shows"
     shows = [
-        {**frontmatter.load(str(show)), "slug": show.stem}
+        {**frontmatter.load(str(show)), "link": show.stem}
         for show in list(shows_path.glob("**/*.md"))
     ]
     return shows

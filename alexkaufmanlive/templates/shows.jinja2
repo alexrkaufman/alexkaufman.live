@@ -3,14 +3,14 @@
 {% block main %}
     <h1> Upcoming Shows </h1>
     {% for show in upcoming_shows %}
-        <a href="{{ show.slug }}">
-            <h2>{{ show['title'] }}</h2>
+        <a href="{{ show.link }}">
+            <p>{{ show['title'] }}</p>
         </a>
     {% endfor %}
     <h1> Past Shows </h1>
     {% for show in past_shows %}
-        <a href="{{ show.slug }}">
-            <h2>{{ show['title'] }}</h2>
+        <a href="{{ show.link }}">
+            <p>{{ show['title'] }}</p>
         </a>
     {% endfor %}
 {% endblock %}
