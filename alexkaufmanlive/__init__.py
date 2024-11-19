@@ -36,13 +36,17 @@ def create_app(test_config=None):
 
     @app.route("/")
     def home_page():
+
         home_path = pathlib.Path(current_app.root_path) / "content/home.md"
+
         shows = load_shows()
         upcoming_shows = [
             show for show in shows if show["show_date"] > datetime.date.today()
         ]
         upcoming_shows.sort(key=lambda x: x["show_date"], reverse=True)
+
         home = frontmatter.load(str(home_path))
+
         content = render_template_string(
             str(mistune.html(home.content)), upcoming_shows=upcoming_shows
         )
