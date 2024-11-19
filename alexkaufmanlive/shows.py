@@ -28,7 +28,7 @@ def index():
     upcoming_shows = [
         show for show in shows if show["show_date"] > datetime.date.today()
     ]
-    upcoming_shows.sort(key=lambda x: x["show_date"])
+    upcoming_shows.sort(key=lambda x: x["show_date"], reverse=True)
 
     past_shows = [show for show in shows if show["show_date"] < datetime.date.today()]
     past_shows.sort(key=lambda x: x["show_date"], reverse=True)
