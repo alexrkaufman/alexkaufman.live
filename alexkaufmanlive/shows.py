@@ -43,9 +43,11 @@ def show(show_slug):
     """Show all the posts, most recent first."""
     shows = load_shows()
     show_path = pathlib.Path(current_app.root_path) / f"content/shows/{show_slug}.md"
-    show_load = frontmatter.load(str(show_path))
-    show = {
-        "metadata": show_load.metadata,
-        "content": mistune.html(show_load.content),
-    }
-    return render_template("show.jinja2", show=show)
+    if show_path.exists():
+        show_load = frontmatter.load(str(show_path))
+        show = {
+            "metadata": show_load.metadata,
+            "content": mistune.html(show_load.content),
+        }
+        return render_template("show.jinja2", show=show)
+    return render_template("404.jinja2"), 404
