@@ -1,7 +1,11 @@
+import datetime
 import os
 
 from flask import Flask
-from flask import render_template
+from flask import render_template, render_template_string, current_app
+import pathlib
+import frontmatter
+import mistune
 
 
 def create_app(test_config=None):
@@ -31,7 +35,16 @@ def create_app(test_config=None):
 
     @app.route("/")
     def home_page():
-        return render_template("base.jinja2")
+        home_path = pathlib.Path(current_app.root_path) / "content/home.md"
+        shows = load_shows()
+        upcoming_shows = [
+            show for show in shows if show["show_date"] > datetime.date.today()
+        ]
+        home = frontmatter.load(str(home_path))
+        content = render_template_string(
+            str(mistune.html(home.content)), upcoming_shows=upcoming_shows
+        )
+        return render_template("base.jinja2", content=content)
 
     @app.errorhandler(404)
     def page_not_found(error):
@@ -42,3 +55,13 @@ def create_app(test_config=None):
     app.register_blueprint(shows.bp)
 
     return app
+
+
+def load_shows():
+
+    shows_path = pathlib.Path(current_app.root_path) / "content/shows"
+    shows = [
+        {**frontmatter.load(str(show)), "slug": show.stem}
+        for show in list(shows_path.glob("**/*.md"))
+    ]
+    return shows
