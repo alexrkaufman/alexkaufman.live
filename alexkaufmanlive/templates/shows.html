@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <h1> Upcoming Shows </h1>
+    {% for show in shows %}
+        <h2>{{ show['title'] }}</h2>
+    {% endfor %}
+    <h1> Past Shows </h1>
+    {% for show in shows %}
+        <h2>{{ show['title'] }}</h2>
+    {% endfor %}
+{% endblock %}
