@@ -5,10 +5,7 @@ _Standup Comedian / Former Physicist_
 # Upcoming Shows
 
 {% for show in upcoming_shows %}
-<a href="{{ show.link }}">
-
-<h2>{{ show['title'] }}</h2>
-</a>
+<a href="{{ show.link }}"><p>{{ show['title'] }}</p></a>
 {% endfor %}
 
 # About
