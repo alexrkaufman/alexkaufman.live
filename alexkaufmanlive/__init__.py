@@ -31,11 +31,11 @@ def create_app(test_config=None):
 
     @app.route("/")
     def home_page():
-        return render_template("base.html")
+        return render_template("base.jinja2")
 
     @app.errorhandler(404)
     def page_not_found(error):
-        return render_template("404.html"), 404
+        return render_template("404.jinja2"), 404
 
     from . import shows
 
