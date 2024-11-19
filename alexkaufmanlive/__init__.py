@@ -25,25 +25,15 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    # a simple page that says hello
-    @app.route("/hello")
-    def hello():
-        return "Hello, World!"
+    @app.context_processor
+    def inject_sitename():
+        return dict(site_name="alexkaufman.live")
 
     @app.route("/")
     def home_page():
-        return "<p>Home Page</p>"
+        return render_template("base.html")
 
-    @app.route("/about")
-    def about_page():
-        return "<p>About</p>"
 
-    @app.route("/shows/")
-    def shows_page():
-        return "<p>Shows</p>"
 
-    @app.route("/blog/")
-    def blog_page():
-        return "<p>Blog</p>"
 
     return app

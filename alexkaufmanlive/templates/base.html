@@ -18,19 +18,19 @@
 </head>
 <body class="{{ body_class }}">
     <header>
-        {{% block header %}}
-        <a class="title" href="/"><h1>{{ title }}</h1></a>
+        {% block header %}
+        <a class="title" href="/"><h1>{{ site_name }}</h1></a>
         <nav>
-            {{% block nav %}}
+            {% block nav %}
             <p>
                 <a href="/">Home</a>
                 <a href="/shows/">Shows</a>
                 <a href="/blog/">Blog</a>
             </p>
-            {{% endblock %}}
+            {% endblock %}
         </nav>
-        {{% endblock %}}
+        {% endblock %}
     </header>
-    <main>{{% block main %}} {{% endblock %}}</main>
-    <footer>{{% block footer %}} {{% endblock %}}</footer>
+    <main>{% block main %} {% endblock %}</main>
+    <footer>{% block footer %} {% endblock %}</footer>
 </body>
