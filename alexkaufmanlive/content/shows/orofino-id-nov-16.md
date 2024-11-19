@@ -1,5 +1,5 @@
 ---
-title: Orofino, ID | Nov. 16
+title: The Red Door
 show_date: 2024-11-16
 ---
 

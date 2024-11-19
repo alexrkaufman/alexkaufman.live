@@ -1,5 +1,5 @@
 ---
-title: Roast of Alex Kaufman | Nov. 29
+title: Roast of Alex Kaufman
 show_date: 2024-11-29
 ---
 

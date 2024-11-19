@@ -1,5 +1,5 @@
 ---
-title: Waverly, NY | Sept. 19
+title: Legacy Lounge
 show_date: 2024-09-19
 ---
 

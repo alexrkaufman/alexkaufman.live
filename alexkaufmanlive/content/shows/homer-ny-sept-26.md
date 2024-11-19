@@ -1,5 +1,5 @@
 ---
-title: Homer, NY | Sept. 26
+title: Homebrewed Comedy at The Glen Haven
 show_date: 2024-09-26
 ---
 

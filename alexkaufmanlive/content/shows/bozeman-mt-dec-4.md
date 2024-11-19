@@ -1,5 +1,5 @@
 ---
-title: Libertarian Party Show | Dec. 4
+title: Libertarian Party Show
 show_date: 2024-12-04
 ---
 

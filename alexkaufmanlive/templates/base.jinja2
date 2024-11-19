@@ -16,16 +16,16 @@
         href="{{ url_for('static', filename='style.css') }}"
     />
 </head>
-<body class="{{ body_class }}">
+<body>
     <header>
         {% block header %}
         <a class="title" href="/"><h1>{{ site_name }}</h1></a>
         <nav>
             {% block nav %}
             <p>
-                <a href="/">Home</a>
-                <a href="/shows/">Shows</a>
-                <a href="/blog/">Blog</a>
+                <a href="/">home</a>
+                <a href="/shows/">shows</a>
+                <a href="/blog/">blog</a>
             </p>
             {% endblock %}
         </nav>

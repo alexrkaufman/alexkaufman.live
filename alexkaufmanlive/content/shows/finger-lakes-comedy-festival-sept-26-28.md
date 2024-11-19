@@ -1,5 +1,5 @@
 ---
-title: Finger Lakes Comedy Festival | Sept. 26-28
+title: Finger Lakes Comedy Festival
 show_date: 2024-09-27
 ---
 

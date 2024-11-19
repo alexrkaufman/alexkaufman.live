@@ -245,3 +245,36 @@ td {
 .upvote-count {
     margin-top: -3px;
 }
+
+.show.on-list {
+    display: flex;
+    justify-content: space-between;
+    text-align: justify;
+    align-items: center;
+    padding: 0 0.5em;
+}
+
+.show.show.on-list.show-title {
+    display: inline-block;
+}
+
+.show-title a {
+    text-decoration: none;
+}
+.show-title a:hover {
+    text-decoration: underline;
+}
+
+.show.show.on-list.show-meta {
+    display: inline-block;
+}
+
+.show.on-list h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.show.on-list h3 {
+    margin: 0.2em;
+    padding: 0;
+}

@@ -1,5 +1,5 @@
 ---
-title: Sinful Comedy Night | Nov. 22
+title: Sinful Comedy Night
 show_date: 2024-11-22
 ---
 

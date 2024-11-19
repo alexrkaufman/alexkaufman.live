@@ -1,5 +1,5 @@
 ---
-title: Glasgow, MT | Oct. 26
+title: Pub and Grub Comedy, Glasgow
 show_date: 2024-10-26
 ---
 

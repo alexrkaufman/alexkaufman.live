@@ -1,5 +1,5 @@
 ---
-title: Pendelton, OR | Oct. 4
+title: Flying X
 show_date: 2024-10-04
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Philadelphia, PA | Sept. 25
+title: Off Leash Comedy
 show_date: 2024-09-25
 ---
 

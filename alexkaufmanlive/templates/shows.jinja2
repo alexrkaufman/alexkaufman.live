@@ -2,15 +2,31 @@
 
 {% block main %}
     <h1> Upcoming Shows </h1>
+    <div class="shows">
     {% for show in upcoming_shows %}
-        <a href="{{ show.link }}">
-            <p>{{ show['title'] }}</p>
-        </a>
+    <article class="show on-list">
+        <h3 class="show-title">
+            <a href="{{ show.link }}">
+                {{ show['title'] }}
+            </a>
+        </h3>
+        <div class="show-meta">
+            <time class="post-date">{{ show["show_date"] }}</time>
+        </div>
+    </article>
     {% endfor %}
+    </div>
     <h1> Past Shows </h1>
     {% for show in past_shows %}
-        <a href="{{ show.link }}">
-            <p>{{ show['title'] }}</p>
-        </a>
+    <article class="show on-list">
+        <h3 class="show-title">
+            <a href="{{ show.link }}">
+                {{ show['title'] }}
+            </a>
+        </h3>
+        <div class="show-meta">
+            <time class="post-date">{{ show["show_date"] }}</time>
+        </div>
+    </article>
     {% endfor %}
 {% endblock %}
