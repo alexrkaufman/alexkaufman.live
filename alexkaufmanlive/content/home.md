@@ -2,7 +2,7 @@
 
 _Standup Comedian / Former Physicist_
 
-# Upcoming Dates
+# Upcoming Shows
 
 {% for show in upcoming_shows %}
 <a href="{{ show.slug }}">
