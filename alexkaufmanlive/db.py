@@ -10,27 +10,12 @@ from flask import current_app, g
 def init_app(app):
     app.teardown_appcontext(close_db)
     app.cli.add_command(init_db_command)
-    app.cli.add_command(load_db_command)
 
 
 def init_db():
     db = get_db()
     with current_app.open_resource("schema.sql") as f:
         db.executescript(f.read().decode("utf8"))
-
-
-@click.command("init-db")
-def init_db_command():
-    """Clear the existing data and create new tables."""
-    init_db()
-    click.echo("Initialized the database.")
-
-
-sqlite3.register_converter("timestamp", lambda v: datetime.fromisoformat(v.decode()))
-
-
-def load_db():
-    db = get_db()
 
     shows_path = pathlib.Path(current_app.root_path) / "content/shows"
     show_files = list(shows_path.glob("**/*.md"))
@@ -57,11 +42,14 @@ def load_db():
         db.commit()
 
 
-@click.command("load-db")
-def load_db_command():
+@click.command("init-db")
+def init_db_command():
     """Clear the existing data and create new tables."""
-    load_db()
+    init_db()
     click.echo("Initialized the database.")
+
+
+sqlite3.register_converter("timestamp", lambda v: datetime.fromisoformat(v.decode()))
 
 
 def get_db():
