@@ -1,5 +1,6 @@
 import pathlib
 
+import mistune
 from flask import (
     Blueprint,
     render_template,
@@ -18,7 +19,7 @@ def index():
 
     upcoming_shows = db.execute(
         (
-            "SELECT id, title, content, show_date, link"
+            "SELECT id, title, show_date, link"
             " FROM shows"
             " WHERE show_date > CURRENT_DATE"
             " ORDER BY show_date DESC"
@@ -26,7 +27,7 @@ def index():
     ).fetchall()
     past_shows = db.execute(
         (
-            "SELECT id, title, content, show_date, link"
+            "SELECT id, title, show_date, link"
             " FROM shows"
             " WHERE show_date < CURRENT_DATE"
             " ORDER BY show_date DESC"
