@@ -7,7 +7,7 @@ import datetime
 import frontmatter
 import mistune
 import pathlib
-from . import load_shows
+from .db import load_shows
 
 bp = Blueprint("shows", __name__, url_prefix="/shows")
 shows_path = pathlib.Path("shows/")

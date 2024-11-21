@@ -1,4 +1,3 @@
-import datetime
 import os
 
 from flask import Flask
@@ -8,13 +7,15 @@ from flask.helpers import redirect
 import frontmatter
 import mistune
 
+from .db import get_db
+
 
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY="dev",
-        DATABASE=os.path.join(app.instance_path, "flaskr.sqlite"),
+        DATABASE=os.path.join(app.instance_path, "alexkaufmanlive.sqlite"),
     )
 
     if test_config is None:
@@ -37,20 +38,24 @@ def create_app(test_config=None):
     @app.route("/")
     def home_page():
 
+        db = get_db()
         home_path = pathlib.Path(current_app.root_path) / "content/home.md"
 
-        shows = load_shows()
-        upcoming_shows = [
-            show for show in shows if show["show_date"] > datetime.date.today()
-        ]
-        upcoming_shows.sort(key=lambda x: x["show_date"], reverse=True)
+        upcoming_shows = db.execute(
+            (
+                "SELECT id, title, content, show_date, link"
+                " FROM shows"
+                " WHERE show_date > CURRENT_DATE"
+                " ORDER BY show_date DESC"
+            )
+        ).fetchall()
 
         home = frontmatter.load(str(home_path))
-
         content = render_template_string(
             str(mistune.html(home.content)), upcoming_shows=upcoming_shows
         )
-        return render_template("base.jinja2", content=content, title="alexkaufman.live")
+
+        return render_template("home.jinja2", content=content, title="alexkaufman.live")
 
     @app.route("/blog/")
     def blog_redirect():
@@ -64,14 +69,8 @@ def create_app(test_config=None):
 
     app.register_blueprint(shows.bp)
 
+    from . import db
+
+    db.init_app(app)
+
     return app
-
-
-def load_shows():
-
-    shows_path = pathlib.Path(current_app.root_path) / "content/shows"
-    shows = [
-        {**frontmatter.load(str(show)), "link": show.stem}
-        for show in list(shows_path.glob("**/*.md"))
-    ]
-    return shows
