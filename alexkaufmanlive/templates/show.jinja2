@@ -1,5 +1,8 @@
 {% extends "base.jinja2" %}
+{% block title %}
+{{ show.title }}
+{% endblock %}
 {% block main %}
-    <h1>{{ show.metadata.title }}</h1>
+    <h1>{{ show.title }}</h1>
     {{ show.content }}
 {% endblock %}

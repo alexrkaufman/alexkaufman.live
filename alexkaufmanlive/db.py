@@ -1,8 +1,9 @@
-import sqlite3
 import pathlib
+import sqlite3
+from datetime import datetime
+
 import click
 import frontmatter
-from datetime import datetime
 from flask import current_app, g
 
 
@@ -78,16 +79,3 @@ def close_db(e=None):
 
     if db is not None:
         db.close()
-
-
-def load_shows():
-
-    db = get_db()
-    shows = db.execute(
-        (
-            "SELECT id, title, content, show_date, link"
-            " FROM shows"
-            " ORDER BY show_date DESC"
-        )
-    ).fetchall()
-    return shows
