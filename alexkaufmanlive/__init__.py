@@ -1,13 +1,17 @@
 import os
-
-from flask import Flask
-from flask import render_template, render_template_string, current_app
 import pathlib
-from flask.helpers import redirect
+
 import frontmatter
 import mistune
+from flask import Flask, current_app, render_template, render_template_string
+from flask.helpers import redirect
 
 from .db import get_db
+
+site_metadata = {
+    "site_name": "alexkaufman.live",
+    "tagline": "Standup comedian / Former physicist",
+}
 
 
 def create_app(test_config=None):
@@ -33,7 +37,7 @@ def create_app(test_config=None):
 
     @app.context_processor
     def inject_sitename():
-        return dict(site_name="alexkaufman.live")
+        return site_metadata
 
     @app.route("/")
     def home_page():
@@ -55,7 +59,7 @@ def create_app(test_config=None):
             str(mistune.html(home.content)), upcoming_shows=upcoming_shows
         )
 
-        return render_template("home.jinja2", content=content, title="alexkaufman.live")
+        return render_template("base.jinja2", content=content, title="alexkaufman.live")
 
     @app.route("/blog/")
     def blog_redirect():

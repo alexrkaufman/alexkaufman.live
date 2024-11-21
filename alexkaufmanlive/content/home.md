@@ -1,6 +1,6 @@
 [![Alex Kaufman Comedy](https://bear-images.sfo2.cdn.digitaloceanspaces.com/alexkaufmancomedy-1724203420.jpg)](https://bear-images.sfo2.cdn.digitaloceanspaces.com/alexkaufmancomedy-1724424682.jpg)
 
-_Standup Comedian / Former Physicist_
+{{ tagline }}
 
 # Upcoming Shows
 

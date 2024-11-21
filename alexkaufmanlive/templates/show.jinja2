@@ -1,7 +1,13 @@
 {% extends "base.jinja2" %}
-{% block title %}
-{{ show.title }}
+
+{% block title %} {{ show.title }} {% endblock %}
+
+{% block head %}
+{{ super() }}
+<script type="application/ld+json">
+</script>
 {% endblock %}
+
 {% block main %}
     <h1>{{ show.title }}</h1>
     {{ show.content }}
