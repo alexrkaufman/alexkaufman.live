@@ -50,7 +50,7 @@ def create_app(test_config=None):
         content = render_template_string(
             str(mistune.html(home.content)), upcoming_shows=upcoming_shows
         )
-        return render_template("base.jinja2", content=content)
+        return render_template("base.jinja2", content=content, title="alexkaufman.live")
 
     @app.route("/blog/")
     def blog_redirect():

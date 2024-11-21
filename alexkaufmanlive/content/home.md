@@ -7,11 +7,11 @@ _Standup Comedian / Former Physicist_
 <div class="shows">
 {% for show in upcoming_shows %}
   <article class="show on-list">
-      <h3 class="show-title">
+      <h2 class="show-title">
           <a href="shows/{{ show.link }}">
               {{ show['title'] }}
           </a>
-      </h3>
+      </h2>
       <div class="show-meta">
           <time class="post-date">{{ show["show_date"] }}</time>
       </div>
@@ -21,9 +21,13 @@ _Standup Comedian / Former Physicist_
 
 # About
 
+<div class="about">
+
 After growing up in a dozen+ cities in the US and abroad, Alex Kaufman began doing stand-up during his college years in Tacoma, in the process founding the now iconic Bob’s Comedy Jive. He then moved to New York before ending up in Bozeman, Montana, to get a PhD in theoretical gravity — and then procrastinated so hard he accidentally started the production company, Bone Dry Comedy. Today, Bone Dry runs a circuit of shows bringing the likes of Amy Miller, Billy Wayne Davis, Kate Willett, and dozens of other headliners to multiple cities in Montana.
 
 Since then, he’s featured for Kyle Kinane, Sean Patton, and more, and performed at festivals including Finger Lakes Comedy Festival, Mutiny Radio Comedy Festival, and Loons on the Lake. You can catch him as a regular at Last Best Comedy, Spokane Comedy Club, and other clubs and festivals around the country.
+
+</div>
 
 ## Social Media
 
