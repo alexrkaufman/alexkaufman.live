@@ -52,6 +52,8 @@ def show(show_slug):
         f" FROM shows WHERE link='{show_slug}'"
     ).fetchone()
     if show != []:
+        show = {**show}
+        show["content"] = mistune.html(show["content"])
         return render_template("show.jinja2", show=show)
 
     return render_template("404.jinja2"), 404
