@@ -1,6 +1,7 @@
 import pathlib
 import sqlite3
 from datetime import datetime
+import json
 
 import click
 import frontmatter
@@ -27,18 +28,21 @@ def update_db():
     show_files = list(shows_path.glob("**/*.md"))
 
     for show_file in show_files:
-        show_data = dict.fromkeys(["title", "show_date", "content", "link"], None)
-        show_data = {**show_data, **frontmatter.load(str(show_file)).to_dict()}
+        show_data = dict.fromkeys(
+            ["title", "show_date", "content", "link", "meta"], None
+        )
+        show_data |= frontmatter.load(str(show_file)).to_dict()
+
         show_data["link"] = (
             show_file.stem if show_data["link"] is None else show_data["link"]
         )
 
         db.execute(
             (
-                "INSERT INTO shows (title, show_date, content, link)"
-                " values (:title, :show_date, :content, :link)"
+                "INSERT INTO shows (title, show_date, content, link, meta)"
+                " values (:title, :show_date, :content, :link, json(:meta))"
                 " ON CONFLICT(link)"
-                " do UPDATE SET title=:title, show_date=:show_date, content=:content"
+                " do UPDATE SET title=:title, show_date=:show_date, content=:content, meta=json(:meta)"
             ),
             show_data,
         )
@@ -59,7 +63,9 @@ def update_db_command():
     click.echo("Updated the database.")
 
 
+sqlite3.register_adapter(dict, lambda d: json.dumps(d).encode())
 sqlite3.register_converter("timestamp", lambda v: datetime.fromisoformat(v.decode()))
+sqlite3.register_converter("JSON", lambda v: json.loads(v.decode()))
 
 
 def get_db():
