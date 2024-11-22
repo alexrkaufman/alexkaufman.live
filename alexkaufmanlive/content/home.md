@@ -23,9 +23,9 @@ _{{ tagline }}_
 
 <div class="about">
 
-After growing up in a dozen+ cities in the US and abroad, Alex Kaufman began doing stand-up during his college years in Tacoma, in the process founding the now iconic Bob’s Comedy Jive. He then moved to New York before ending up in Bozeman, Montana, to get a PhD in theoretical gravity — and then procrastinated so hard he accidentally started the production company, Bone Dry Comedy. Today, Bone Dry runs a circuit of shows bringing the likes of Amy Miller, Billy Wayne Davis, Kate Willett, and dozens of other headliners to multiple cities in Montana.
+After growing up in over a dozen cities in the US and abroad, Alex Kaufman began doing stand-up during his college years in Tacoma, in the process founding the now iconic Bob’s Comedy Jive. He then moved to New York before ending up in Bozeman, Montana, to get a PhD in theoretical gravity — and then procrastinated so hard he accidentally started the production company, Bone Dry Comedy. Today, Bone Dry runs a circuit of shows bringing the likes of Amy Miller, Billy Wayne Davis, Kate Willett, and dozens of other headliners to multiple cities in Montana.
 
-Since then, he’s featured for Kyle Kinane, Sean Patton, and more, and performed at festivals including Finger Lakes Comedy Festival, Mutiny Radio Comedy Festival, and Loons on the Lake. You can catch him as a regular at Last Best Comedy, Spokane Comedy Club, and other clubs and festivals around the country.
+Since then, he’s featured for Kyle Kinane, Sean Patton, and more, and performed at festivals including Finger Lakes Comedy Festival, Mutiny Radio Comedy Festival, and Loons on the Lake. You can catch him as a regular at Last Best Comedy, and other clubs, festivals, and shows around the country.
 
 </div>
 
