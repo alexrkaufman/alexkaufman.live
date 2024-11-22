@@ -5,10 +5,33 @@
 {% block head %}
 {{ super() }}
 <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "location": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "{{ show.meta.city }}",
+      "addressRegion": "{{ show.meta.state }}",
+      "postalCode": "{{ show.meta.zip_code }}",
+      "streetAddress": "{{ show.meta.street_address }}"
+    },
+    "name": "{{ show.meta.venue }}"
+  },
+  "name": "{{ show.title }}",
+  "startDate": "{{ show.show_date}}",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "description": "{{ show.meta.description }}",
+  "image": "{% if show.meta.image %} {{ url_for('static', filename=show.meta.image) }} {% endif %}"
+}
 </script>
 {% endblock %}
 
 {% block main %}
     <h1>{{ show.title }}</h1>
+    {{ show.meta.venue_name }} {{ show.show_date }}
+
     {{ show.content }}
 {% endblock %}
