@@ -26,6 +26,7 @@ def update_db():
     db = get_db()
     shows_path = pathlib.Path(current_app.root_path) / "content/shows"
     show_files = list(shows_path.glob("**/*.md"))
+    links = set()
 
     for show_file in show_files:
         show_data = dict.fromkeys(
@@ -45,6 +46,24 @@ def update_db():
                 " do UPDATE SET title=:title, show_date=:show_date, content=:content, meta=json(:meta)"
             ),
             show_data,
+        )
+
+        links.add(show_data["link"])
+
+        db.commit()
+
+    links_in_db = {
+        show["link"] for show in db.execute("SELECT link FROM shows").fetchall()
+    }
+    dead_links = links_in_db - links
+    if len(dead_links) != 0:
+        db.execute(
+            (
+                "DELETE FROM shows WHERE link IN ("
+                + ",".join(["?"] * len(dead_links))
+                + ")"
+            ),
+            list(dead_links),
         )
         db.commit()
 
