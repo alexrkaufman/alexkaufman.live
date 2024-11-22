@@ -10,6 +10,7 @@ from flask import current_app, g
 def init_app(app):
     app.teardown_appcontext(close_db)
     app.cli.add_command(init_db_command)
+    app.cli.add_command(update_db_command)
 
 
 def init_db():
@@ -17,6 +18,11 @@ def init_db():
     with current_app.open_resource("schema.sql") as f:
         db.executescript(f.read().decode("utf8"))
 
+    update_db()
+
+
+def update_db():
+    db = get_db()
     shows_path = pathlib.Path(current_app.root_path) / "content/shows"
     show_files = list(shows_path.glob("**/*.md"))
 
@@ -30,14 +36,11 @@ def init_db():
         db.execute(
             (
                 "INSERT INTO shows (title, show_date, content, link)"
-                "values (?, ?, ?, ?)"
+                " values (:title, :show_date, :content, :link)"
+                " ON CONFLICT(link)"
+                " do UPDATE SET title=:title, show_date=:show_date, content=:content"
             ),
-            (
-                show_data["title"],
-                show_data["show_date"],
-                show_data["content"],
-                show_data["link"],
-            ),
+            show_data,
         )
         db.commit()
 
@@ -47,6 +50,13 @@ def init_db_command():
     """Clear the existing data and create new tables."""
     init_db()
     click.echo("Initialized the database.")
+
+
+@click.command("update-db")
+def update_db_command():
+    """Clear the existing data and create new tables."""
+    update_db()
+    click.echo("Updated the database.")
 
 
 sqlite3.register_converter("timestamp", lambda v: datetime.fromisoformat(v.decode()))
