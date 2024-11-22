@@ -227,6 +227,11 @@ td {
     margin-top: -3px;
 }
 
+.show-list {
+    list-style: none;
+    padding: unset;
+}
+
 .show {
     display: flex;
     justify-content: space-between;
@@ -241,7 +246,7 @@ td {
 
 .show-title {
     margin: 0;
-    padding: 0 0.5em;
+    padding: 0.2em 0.5em;
     font-size: 1.17em;
 }
 
