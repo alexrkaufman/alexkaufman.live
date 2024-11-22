@@ -1,10 +1,7 @@
 import pathlib
 
 import mistune
-from flask import (
-    Blueprint,
-    render_template,
-)
+from flask import Blueprint, render_template, render_template_string
 
 from .db import get_db
 
@@ -49,12 +46,14 @@ def show(show_slug):
     db = get_db()
 
     show = db.execute(
-        "SELECT id, title, content, show_date, link"
+        "SELECT id, title, content, show_date, link, meta"
         f" FROM shows WHERE link='{show_slug}'"
     ).fetchone()
     if show != []:
-        show = {**show}
-        show["content"] = mistune.html(show["content"])
+        show = dict(show)
+        show["content"] = mistune.html(
+            render_template_string(show["content"], show=show)
+        )
         return render_template("show.jinja2", show=show)
 
     return render_template("404.jinja2"), 404
