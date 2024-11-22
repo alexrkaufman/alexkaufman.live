@@ -7,6 +7,12 @@ from .db import get_db
 
 bp = Blueprint("shows", __name__, url_prefix="/shows")
 shows_path = pathlib.Path("shows/")
+shows_metadata = {"page_class": "shows"}
+
+
+@bp.context_processor
+def inject_sitename():
+    return shows_metadata
 
 
 @bp.route("/")
