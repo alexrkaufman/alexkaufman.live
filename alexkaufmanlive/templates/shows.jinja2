@@ -6,7 +6,7 @@
     {% for show in upcoming_shows %}
     <article class="show on-list">
         <h2 class="show-title">
-            <a href="{{ show.link }}">
+            <a href="{{ url_for('shows.show', show_slug=show.link) }}">
                 {{ show.title }}
             </a>
         </h2>
@@ -21,7 +21,7 @@
     {% for show in past_shows %}
     <article class="show on-list">
         <h2 class="show-title">
-            <a href="{{ show.link }}">
+            <a href="{{ url_for('shows.show', show_slug=show.link) }}">
                 {{ show.title }}
             </a>
         </h2>
