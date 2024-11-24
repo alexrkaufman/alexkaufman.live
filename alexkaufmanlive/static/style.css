@@ -210,32 +210,19 @@ td {
     white-space: nowrap;
 }
 
-.upvote-button {
-    padding: 0;
-    margin: 0;
-    border: 0;
-    background-color: inherit;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.upvote-button.upvoted {
-    color: salmon;
-}
-.upvote-count {
-    margin-top: -3px;
-}
-
 .show-list {
     list-style: none;
     padding: unset;
 }
 
 .show {
-    display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.show.on-list {
+    display: flex;
+    flex-direction: row;
 }
 
 .show.on-list.show-title {
@@ -290,7 +277,13 @@ td {
         align-items: normal;
     }
 
-    .show-title {
-        font-size: 1em;
+    .show.on-list {
+        flex-direction: column;
+        line-height: 1.3em;
+    }
+
+    .show-meta {
+        margin-left: auto;
+        padding: 0 0.5em;
     }
 }
