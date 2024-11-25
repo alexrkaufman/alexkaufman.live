@@ -4,7 +4,7 @@ _{{ tagline }}_
 
 # Upcoming Shows
 
-<div class="shows">
+<div class="show-list">
 {% for show in upcoming_shows %}
   <article class="show on-list">
       <h2 class="show-title">

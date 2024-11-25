@@ -30,8 +30,19 @@
 {% endblock %}
 
 {% block main %}
-    <h1>{{ show.title }}</h1>
-    {{ show.meta.venue_name }} {{ show.show_date }}
+    <div class='show-head'>
+        <h1 class='show-title'>{{ show.title }}</h1>
+        <div class='show-meta'>
+            {% if show.meta.venue %}
+            <div class='venue'>
+                {{ show.meta.venue }}{% if show.meta.city %},
+                {{ show.meta.city }}{% endif %}{% if show.meta.state %},
+                {{ show.meta.state }}{% endif %}
+            </div>
+            {% endif %}
+            <time class='show-date'>{{ show.show_date }}</time>
+        </div>
+    </div>
 
     {{ show.content }}
 {% endblock %}
