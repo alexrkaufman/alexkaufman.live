@@ -222,11 +222,6 @@ td {
     list-style: none;
     padding: unset;
 
-    .show {
-        justify-content: space-between;
-        align-items: center;
-    }
-
     .show-title {
         margin: 0;
         padding: 0.2em 0.5em;
@@ -236,6 +231,8 @@ td {
     .show.on-list {
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
 }
 
@@ -292,13 +289,20 @@ td {
         align-items: normal;
     }
 
-    .show.on-list {
-        flex-direction: column;
-        line-height: 1.3em;
-    }
+    .show-list {
+        .show.on-list {
+            flex-direction: column;
+            line-height: 1.3em;
+            align-items: unset;
+        }
 
-    .show-meta {
-        margin-left: auto;
-        padding: 0 0.5em;
+        .show-title {
+            margin-left: 0;
+        }
+
+        .show-meta {
+            margin-left: auto;
+            padding: 0 0.5em;
+        }
     }
 }
