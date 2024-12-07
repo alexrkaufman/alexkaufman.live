@@ -25,7 +25,7 @@ def index():
             "SELECT id, title, show_date, link"
             " FROM shows"
             " WHERE show_date > CURRENT_DATE"
-            " ORDER BY show_date DESC"
+            " ORDER BY show_date ASC"
         )
     ).fetchall()
     past_shows = db.execute(
