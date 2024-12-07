@@ -41,6 +41,7 @@ def create_app(test_config=None):
 
     @app.route("/")
     def home_page():
+        """Builds the home page of the site."""
 
         db = get_db()
         home_path = pathlib.Path(current_app.root_path) / "content/home.md"
