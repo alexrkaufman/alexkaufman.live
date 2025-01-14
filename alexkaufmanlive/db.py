@@ -1,7 +1,7 @@
+import json
 import pathlib
 import sqlite3
 from datetime import datetime
-import json
 
 import click
 import frontmatter
