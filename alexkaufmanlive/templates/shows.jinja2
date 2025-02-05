@@ -3,6 +3,14 @@
 {% block main %}
     <h1> Upcoming Shows </h1>
     <ul class="show-list">
+    {% if not upcoming_shows %}
+        <p>
+            No upcoming shows right now.
+            <a href="mailto:alexkaufmancomedy@gmail.com">
+                Reach out and change that.
+            </a>
+        </p>
+    {% endif %}
     {% for show in upcoming_shows %}
     <li>
     <article class="show on-list">
