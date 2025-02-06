@@ -2,45 +2,7 @@
 {% block title %} shows | {{ site_name }} {% endblock %}
 {% block main %}
     <h1> Upcoming Shows </h1>
-    <ul class="show-list">
-    {% if not upcoming_shows %}
-        <p>
-            No upcoming shows right now.
-            <a href="mailto:alexkaufmancomedy@gmail.com">
-                Reach out and change that.
-            </a>
-        </p>
-    {% endif %}
-    {% for show in upcoming_shows %}
-    <li>
-    <article class="show on-list">
-        <h2 class="show-title">
-            <a href="{{ url_for('shows.show', show_slug=show.link) }}">
-                {{ show.title }}
-            </a>
-        </h2>
-        <div class="show-meta">
-            <time class="show-date">{{ show["show_date"] }}</time>
-        </div>
-    </article>
-    </li>
-    {% endfor %}
-    </ul>
+    {{ show_list(upcoming_shows) }}
     <h1> Past Shows </h1>
-    <ul class="show-list">
-    {% for show in past_shows %}
-    <li>
-    <article class="show on-list">
-        <h2 class="show-title">
-            <a href="{{ url_for('shows.show', show_slug=show.link) }}">
-                {{ show.title }}
-            </a>
-        </h2>
-        <div class="show-meta">
-            <time class="show-date">{{ show["show_date"] }}</time>
-        </div>
-    </article>
-    </li>
-    {% endfor %}
-    </ul>
+    {{ show_list(past_shows) }}
 {% endblock %}
