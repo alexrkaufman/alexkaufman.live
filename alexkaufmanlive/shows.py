@@ -1,7 +1,6 @@
 import pathlib
 
 import mistune
-
 from flask import (
     Blueprint,
     get_template_attribute,
@@ -67,6 +66,10 @@ def show(show_slug):
                 show=show,
                 eventbrite_button=get_template_attribute(
                     "parts.jinja2", "eventbrite_button"
+                ),
+                event_button=get_template_attribute("parts.jinja2", "event_button"),
+                tickettailor_button=get_template_attribute(
+                    "parts.jinja2", "tickettailor_button"
                 ),
             )
         )

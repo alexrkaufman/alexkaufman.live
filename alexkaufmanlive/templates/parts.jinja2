@@ -44,3 +44,25 @@
     });
 </script>
 {%- endmacro %}
+
+{% macro tickettailor_button(event_id, box_office_name) -%}
+<script src="https://cdn.tickettailor.com/js/TTWidget.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var ticketButton = document.getElementById('ticketButton');
+    if (ticketButton) {
+        ticketButton.addEventListener('click', function() {
+            var eventId = '{{ event_id }}'; // Ensure this binding pulls the correct ID
+            TTWidget.loadEvent('{{ box_office_name }}', eventId);
+        });
+    }
+});
+
+</script>
+
+<button id="ticketButton" type="button">buy tickets</button>
+{%- endmacro %}
+
+{% macro event_button(event_link) -%}
+<a href="{{ event_link }}"><button id="event-button" type="button">buy tickets</button></a>
+{%- endmacro %}
