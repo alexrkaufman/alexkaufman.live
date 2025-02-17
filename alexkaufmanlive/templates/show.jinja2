@@ -24,7 +24,7 @@
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   "eventStatus": "https://schema.org/EventScheduled",
   "description": "{{ show.meta.description }}",
-  "image": "{% if show.meta.image %} {{ url_for('static', filename=show.meta.image) }} {% endif %}"
+  "image": "{% if show.image %} {{ url_for('static', filename=show.meta.image) }} {% endif %}"
 }
 </script>
 {% endblock %}

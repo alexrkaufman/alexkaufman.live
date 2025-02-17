@@ -5,6 +5,7 @@ from datetime import datetime
 
 import click
 import frontmatter
+
 from flask import current_app, g
 
 
@@ -30,7 +31,7 @@ def update_db():
 
     for show_file in show_files:
         show_data = dict.fromkeys(
-            ["title", "show_date", "content", "link", "meta"], None
+            ["title", "show_date", "content", "link", "meta", "image"], None
         )
         show_data |= frontmatter.load(str(show_file)).to_dict()
 
@@ -40,10 +41,10 @@ def update_db():
 
         db.execute(
             (
-                "INSERT INTO shows (title, show_date, content, link, meta)"
-                " values (:title, :show_date, :content, :link, json(:meta))"
+                "INSERT INTO shows (title, show_date, content, link, meta, image)"
+                " values (:title, :show_date, :content, :link, json(:meta), :image)"
                 " ON CONFLICT(link)"
-                " do UPDATE SET title=:title, show_date=:show_date, content=:content, meta=json(:meta)"
+                " do UPDATE SET title=:title, show_date=:show_date, content=:content, meta=json(:meta), image=:image"
             ),
             show_data,
         )

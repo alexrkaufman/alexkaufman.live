@@ -6,5 +6,6 @@ create table shows (
     title text not null,
     content text not null,
     show_date date not null,
+    image text,
     meta json
 );
