@@ -3,7 +3,14 @@ import pathlib
 
 import frontmatter
 import mistune
-from flask import Flask, current_app, render_template, render_template_string
+
+from flask import (
+    Flask,
+    current_app,
+    get_template_attribute,
+    render_template,
+    render_template_string,
+)
 from flask.helpers import redirect
 
 from .db import get_db
@@ -57,7 +64,9 @@ def create_app(test_config=None):
 
         home = frontmatter.load(str(home_path))
         content = render_template_string(
-            str(mistune.html(home.content)), upcoming_shows=upcoming_shows
+            str(mistune.html(home.content)),
+            upcoming_shows=upcoming_shows,
+            show_list=get_template_attribute("parts.jinja2", "show_list"),
         )
 
         return render_template(
