@@ -58,21 +58,21 @@ def show(show_slug):
 
     show = db.execute(f"SELECT * FROM shows WHERE link='{show_slug}'").fetchone()
 
-    if show != []:
-        show = dict(show)
-        show["content"] = mistune.html(
-            render_template_string(
-                show["content"],
-                show=show,
-                eventbrite_button=get_template_attribute(
-                    "parts.jinja2", "eventbrite_button"
-                ),
-                event_button=get_template_attribute("parts.jinja2", "event_button"),
-                tickettailor_button=get_template_attribute(
-                    "parts.jinja2", "tickettailor_button"
-                ),
-            )
-        )
-        return render_template("show.jinja2", show=show)
+    if not show:
+        return render_template("404.jinja2"), 404
 
-    return render_template("404.jinja2"), 404
+    show = dict(show)
+    show["content"] = mistune.html(
+        render_template_string(
+            show["content"],
+            show=show,
+            eventbrite_button=get_template_attribute(
+                "parts.jinja2", "eventbrite_button"
+            ),
+            event_button=get_template_attribute("parts.jinja2", "event_button"),
+            tickettailor_button=get_template_attribute(
+                "parts.jinja2", "tickettailor_button"
+            ),
+        )
+    )
+    return render_template("show.jinja2", show=show)
