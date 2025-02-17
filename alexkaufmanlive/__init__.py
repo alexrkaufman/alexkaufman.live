@@ -3,7 +3,6 @@ import pathlib
 
 import frontmatter
 import mistune
-
 from flask import (
     Flask,
     current_app,
