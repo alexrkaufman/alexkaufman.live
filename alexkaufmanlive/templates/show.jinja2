@@ -1,6 +1,6 @@
 {% extends "base.jinja2" %}
 
-{% block title %} {{ show.title }} {% endblock %}
+{% block title %} {{ title }} {% endblock %}
 
 {% block head %}
 {{ super() }}
@@ -12,42 +12,42 @@
     "@type": "Place",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "{{ show.meta.city }}",
-      "addressRegion": "{{ show.meta.state }}",
-      "postalCode": "{{ show.meta.zip_code }}",
-      "streetAddress": "{{ show.meta.street_address }}"
+      "addressLocality": "{{ meta.city }}",
+      "addressRegion": "{{ meta.state }}",
+      "postalCode": "{{ meta.zip_code }}",
+      "streetAddress": "{{ meta.street_address }}"
     },
-    "name": "{{ show.meta.venue }}"
+    "name": "{{ meta.venue }}"
   },
-  "name": "{{ show.title }}",
-  "startDate": "{{ show.show_date}}",
+  "name": "{{ title }}",
+  "startDate": "{{ show_date}}",
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   "eventStatus": "https://schema.org/EventScheduled",
-  "description": "{{ show.meta.description }}",
-  "image": "{% if show.image %} {{ url_for('static', filename=show.meta.image) }} {% endif %}"
+  "description": "{{ meta.description }}",
+  "image": "{% if image %} {{ url_for('static', filename=meta.image) }} {% endif %}"
 }
 </script>
 {% endblock %}
 
 {% block main %}
     <div class='show-head'>
-        <h1 class='show-title'>{{ show.title }}</h1>
+        <h1 class='show-title'>{{ title }}</h1>
         <div class='show-meta'>
-            {% if show.meta.venue %}
+            {% if meta.venue %}
             <div class='venue'>
-                {{ show.meta.venue }},
-                {% if show.meta.city %}
-                    {{ show.meta.city }},
+                {{ meta.venue }},
+                {% if meta.city %}
+                    {{ meta.city }},
                 {% endif %}
-                {% if show.meta.state %}
-                    {{ show.meta.state }}
+                {% if meta.state %}
+                    {{ meta.state }}
                 {% endif %}
             </div>
             {% endif %}
-            <time class='show-date'>{{ show.show_date }}</time>
+            <time class='show-date'>{{ show_date }}</time>
         </div>
     </div>
 
-    {{ show.content }}
+    {{ content }}
 
 {% endblock %}

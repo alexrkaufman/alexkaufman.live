@@ -14,7 +14,6 @@ bp = Blueprint("shows", __name__, url_prefix="/shows")
 shows_path = pathlib.Path("shows/")
 shows_metadata = {"page_class": "shows"}
 
-
 @bp.context_processor
 def inject_sitename():
     return shows_metadata
@@ -52,7 +51,23 @@ def index():
 
 @bp.route("/<show_slug>")
 def show(show_slug):
+
     """Show all the posts, most recent first."""
+
+    macros = {
+        "eventbrite_button": get_template_attribute(
+            "parts.jinja2",
+            "eventbrite_button",
+        ),
+        "event_button": get_template_attribute(
+            "parts.jinja2",
+            "event_button",
+        ),
+        "tickettailor_button": get_template_attribute(
+            "parts.jinja2",
+            "tickettailor_button",
+        ),
+    }
 
     db = get_db()
 
@@ -63,16 +78,6 @@ def show(show_slug):
 
     show = dict(show)
     show["content"] = mistune.html(
-        render_template_string(
-            show["content"],
-            show=show,
-            eventbrite_button=get_template_attribute(
-                "parts.jinja2", "eventbrite_button"
-            ),
-            event_button=get_template_attribute("parts.jinja2", "event_button"),
-            tickettailor_button=get_template_attribute(
-                "parts.jinja2", "tickettailor_button"
-            ),
-        )
+        render_template_string(show["content"], **show, **macros)
     )
-    return render_template("show.jinja2", show=show)
+    return render_template("show.jinja2", **show)
