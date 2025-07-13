@@ -7,9 +7,10 @@ from flask import (
     Flask,
     current_app,
     get_template_attribute,
+    make_response,
     render_template,
     render_template_string,
-    send_from_directory,
+    request,
 )
 from flask.helpers import redirect
 
@@ -73,9 +74,46 @@ def create_app(test_config=None):
             "base.jinja2", content=content, title="alexkaufman.live", page_class="home"
         )
 
+    @app.route("/sitemap")
+    @app.route("/sitemap/")
     @app.route("/sitemap.xml")
-    def sitemap_xml():
-        return send_from_directory(app.static_folder, "sitemap.xml")
+    def sitemap():
+        """
+        Route to dynamically generate a sitemap of your website/application.
+        lastmod and priority tags omitted on static pages.
+        lastmod included on dynamic content such as blog posts.
+        """
+        from urllib.parse import urlparse
+
+        host_components = urlparse(request.host_url)
+        host_base = host_components.scheme + "://" + host_components.netloc
+
+        urls = list()
+        # Static routes with static content
+        for rule in app.url_map.iter_rules():
+            if "GET" in rule.methods and len(rule.arguments) == 0:
+                url = {"loc": f"{host_base}{str(rule)}"}
+                urls.append(url)
+
+        # Dynamic routes with dynamic content
+        db = get_db()
+        shows = db.execute(
+            "SELECT id, title, show_date, link FROM shows ORDER BY show_date ASC"
+        ).fetchall()
+        for show in shows:
+            url = {
+                "loc": f"{host_base}/shows/{show['link']}",
+            }
+            urls.append(url)
+
+        xml_sitemap = render_template(
+            "sitemap_template.jinja2",
+            urls=urls,
+            host_base=host_base,
+        )
+        response = make_response(xml_sitemap)
+        response.headers["Content-Type"] = "application/xml"
+        return response
 
     @app.route("/blog/")
     def blog_redirect():
