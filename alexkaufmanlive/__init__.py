@@ -75,7 +75,7 @@ def create_app(test_config=None):
 
     @app.route("/sitemap.xml")
     def sitemap_xml():
-        send_from_directory(app.static_folder, "sitemap.xml")
+        return send_from_directory(app.static_folder, "sitemap.xml")
 
     @app.route("/blog/")
     def blog_redirect():
