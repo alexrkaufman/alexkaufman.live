@@ -121,7 +121,20 @@ def create_app(test_config=None):
 
     @app.errorhandler(404)
     def page_not_found(error):
-        return render_template("404.jinja2"), 404
+        content = {
+            "error_code": "404",
+            "error_message": "I couldnt find the page you were looking for, but I appreciate you believing in me. ",
+        }
+
+        return render_template("error.jinja2", **content), 404
+
+    @app.errorhandler(500)
+    def internal_server_error(error):
+        content = {
+            "error_code": "500",
+            "error_message": "Well, this is embarassing. Something is broken.",
+        }
+        return render_template("error.jinja2", **content), 500
 
     from . import shows
 

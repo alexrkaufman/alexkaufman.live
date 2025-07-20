@@ -3,6 +3,7 @@ import pathlib
 import mistune
 from flask import (
     Blueprint,
+    abort,
     get_template_attribute,
     render_template,
     render_template_string,
@@ -13,6 +14,7 @@ from .db import get_db
 bp = Blueprint("shows", __name__, url_prefix="/shows")
 shows_path = pathlib.Path("shows/")
 shows_metadata = {"page_class": "shows"}
+
 
 @bp.context_processor
 def inject_sitename():
@@ -51,7 +53,6 @@ def index():
 
 @bp.route("/<show_slug>")
 def show(show_slug):
-
     """Show all the posts, most recent first."""
 
     macros = {
@@ -74,7 +75,7 @@ def show(show_slug):
     show = db.execute(f"SELECT * FROM shows WHERE link='{show_slug}'").fetchone()
 
     if not show:
-        return render_template("404.jinja2"), 404
+        abort(404)
 
     show = dict(show)
     show["content"] = mistune.html(
