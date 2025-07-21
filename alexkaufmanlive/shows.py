@@ -1,6 +1,5 @@
 import pathlib
 
-import mistune
 from flask import (
     Blueprint,
     abort,
@@ -9,6 +8,7 @@ from flask import (
     render_template_string,
 )
 
+from . import render_page
 from .db import get_db
 
 bp = Blueprint("shows", __name__, url_prefix="/shows")
@@ -78,7 +78,7 @@ def show(show_slug):
         abort(404)
 
     show = dict(show)
-    show["content"] = mistune.html(
+    show["content"] = render_page(
         render_template_string(show["content"], **show, **macros)
     )
     return render_template("show.jinja2", **show)

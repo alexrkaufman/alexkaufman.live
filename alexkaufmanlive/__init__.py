@@ -13,6 +13,7 @@ from flask import (
     request,
 )
 from flask.helpers import redirect
+from mistune.directives import FencedDirective, Image
 
 from .db import get_db
 
@@ -20,6 +21,13 @@ site_metadata = {
     "site_name": "alexkaufman.live",
     "tagline": "Standup comedian / Former physicist",
 }
+
+markdown = mistune.create_markdown(
+    plugins=[
+        FencedDirective([Image()]),
+    ],
+    escape=False,
+)
 
 
 def create_app(test_config=None):
@@ -64,8 +72,8 @@ def create_app(test_config=None):
         ).fetchall()
 
         home = frontmatter.load(str(home_path))
-        content = render_template_string(
-            str(mistune.html(home.content)),
+        content = render_page(
+            home.content,
             upcoming_shows=upcoming_shows,
             show_list=get_template_attribute("parts.jinja2", "show_list"),
         )
@@ -145,3 +153,7 @@ def create_app(test_config=None):
     db.init_app(app)
 
     return app
+
+
+def render_page(content, **kwargs):
+    return render_template_string(str(markdown(content)), **kwargs)
