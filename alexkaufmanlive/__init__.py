@@ -156,4 +156,4 @@ def create_app(test_config=None):
 
 
 def render_page(content, **kwargs):
-    return render_template_string(str(markdown(content)), **kwargs)
+    return render_template_string(markdown(content), **kwargs)
