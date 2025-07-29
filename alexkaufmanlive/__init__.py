@@ -19,7 +19,7 @@ from .db import get_db
 
 site_metadata = {
     "site_name": "alexkaufman.live",
-    "tagline": "Standup comedian / Former physicist",
+    "tagline": "standup comic/former physicist",
 }
 
 markdown = mistune.create_markdown(
