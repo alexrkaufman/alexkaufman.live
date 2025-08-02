@@ -18,12 +18,41 @@
         href="{{ url_for('static', filename='style.css') }}"
     />
     <style>
+    body {
+        padding: 0px;
+    }
     @page {
         size: letter;
-        margin: 0in;
+        margin: 0.25in;
     }
+
+    .page { break-after: page; }
+
     main {
-        margin-top: 0px
+        border: 0px;
+        margin: 0px;
+    }
+
+    .page {
+        min-height: 9.5in
+        margin: 0;
+    }
+
+    .page-content {
+        margin: 0.25in 0;
+        border: 1px solid var(--link-color);
+        padding: 30px;
+        background-color: var(--background-color);
+    }
+
+    .page-break {
+        height: 0.25in; /* Creates space at top of next page */
+    }
+
+    @media print {
+        .hero-image-container img {
+            transform: scale(2) translateX(0%) translateY(20%) !important;
+        }
     }
     </style>
     <script src="https://kit.fontawesome.com/33483263d1.js" crossorigin="anonymous"></script>
@@ -31,29 +60,10 @@
 {% endblock %}
 </head>
 <body class="{{ page_class }}">
-    <header>
-        {% block header %}
-        <a class="title" href="/"><h1>{{ site_name }}</h1></a>
-        <bold>{{ tagline }}</bold>
-        {% endblock %}
-    </header>
     <main>
         {% block main %}
             {{ content }}
         {% endblock %}
     </main>
-    <footer>
-        {% block footer %}
-
-
-        <span id="footer-directive">
-        <h2>
-        <a href="https://facebook.com/alexkaufmanlive" aria-label="Alex Kaufman Live Facebook link"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a> | <a href="https://instagram.com/dustiestgolf" aria-label="Alex Kaufman Live Instagram link"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
-        </h2>
-
-        </span>
-
-        {% endblock %}
-    </footer>
 </body>
 </html>

@@ -1,6 +1,13 @@
-<a href="{{ url_for('static', filename='alexkaufmancomedy-1724424682.jpg') }}">
-  <img src="{{ url_for('static', filename='alexkaufmancomedy-1724424682.jpg') }}" alt="Alex Kaufman Comedy">
-</a>
+<div class="page">
+<header>
+    <a class="title" href="/"><h1>alexkaufman.live</h1></a>
+    <bold>standup comic/former physicist</bold>
+</header>
+
+<div class="page-content">
+<div class="hero-image-container" style="width: 100%; overflow: hidden; position: relative;">
+    <img src="{{ url_for('static', filename='alexkaufmancomedy-1724424682.jpg') }}" alt="Alex Kaufman" style="width: 100%; height: 200px; object-fit: cover; transform: scale(2); position: relative; top: 60%; left: 20%;" />
+</div>
 
 # About
 
@@ -26,6 +33,12 @@ Since then, he’s featured for Kyle Kinane, Sean Patton, and more, and performe
 
 </div>
 </div>
+
+</div>
+</div>
+<div class="page-break"></div>
+<div class="page">
+<div class="page-content">
 
 # Press
 
@@ -61,4 +74,5 @@ Since then, he’s featured for Kyle Kinane, Sean Patton, and more, and performe
   </a>
 </div>
 
+</div>
 </div>
