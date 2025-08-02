@@ -23,12 +23,12 @@ Since then, he’s featured for Kyle Kinane, Sean Patton, and more, and performe
 <div class="social-media">
 <div class="social-media-item">
 
-[<i class="fa-brands fa-facebook"></i> facebook](https://facebook.com/dustiestgolf)
+[<i class="fa-brands fa-facebook"></i> facebook](https://facebook.com/alexkaufmanlive)
 
 </div>
 <div class="social-media-item">
 
-[<i class="fa-brands fa-instagram"></i> instagram](https://instagram.com/dustiestgolf)
+[<i class="fa-brands fa-instagram"></i> instagram](https://instagram.com/alexkaufmanlive)
 
 </div>
 </div>
