@@ -5,14 +5,14 @@
     --font-main: "Fira Code", monospace;
     --font-secondary: "Fira Code", monospace;
     --font-scale: 1em;
-    --background-color: #222129;
-    --heading-color: #ffa86a;
-    --text-color: #ffa86a;
-    --link-color: #ffa86a;
+    --background-color: #17161e;
+    --heading-color: #ff9549;
+    --text-color: #ff9549;
+    --link-color: #ff9549;
     --visited-color: #bc8d6b;
     --code-background-color: #bc8d6b;
-    --code-color: #222129;
-    --blockquote-color: #222;
+    --code-color: #17161e;
+    --blockquote-color: #17161e;
 }
 
 body {
