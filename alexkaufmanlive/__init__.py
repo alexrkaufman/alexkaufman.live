@@ -87,16 +87,16 @@ def create_app(test_config=None):
         """Builds the home page of the site."""
 
         db = get_db()
-        home_path = pathlib.Path(current_app.root_path) / "content/epk.md"
+        epk_path = pathlib.Path(current_app.root_path) / "content/epk.md"
 
-        home = frontmatter.load(str(home_path))
+        epk = frontmatter.load(str(epk_path))
         content = render_page(
-            home.content,
+            epk.content,
             show_list=get_template_attribute("parts.jinja2", "show_list"),
         )
 
         return render_template(
-            "base.jinja2", content=content, title="alexkaufman.live", page_class="home"
+            "epk.jinja2", content=content, title="alexkaufman.live", page_class="epk"
         )
 
     @app.route("/sitemap")

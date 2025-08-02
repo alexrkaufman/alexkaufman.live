@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+{% block head %}
+    <title>{% block title %}{{ site_name }}{% endblock %}</title>
+    <meta charset="UTF-8" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=5"
+    />
+    <link rel="canonical" href="https://alexkaufman.live" />
+    <meta
+        name="description"
+        content="{{ tagline }}"
+    />
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    />
+    <style>
+    @page {
+        size: letter;
+        margin: 0in;
+    }
+    main {
+        margin-top: 0px
+    }
+    </style>
+    <script src="https://kit.fontawesome.com/33483263d1.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20y='.9em'%20font-size='90'%3E🎤%3C/text%3E%3C/svg%3E">
+{% endblock %}
+</head>
+<body class="{{ page_class }}">
+    <header>
+        {% block header %}
+        <a class="title" href="/"><h1>{{ site_name }}</h1></a>
+        <bold>{{ tagline }}</bold>
+        {% endblock %}
+    </header>
+    <main>
+        {% block main %}
+            {{ content }}
+        {% endblock %}
+    </main>
+    <footer>
+        {% block footer %}
+
+
+        <span id="footer-directive">
+        <h2>
+        <a href="https://facebook.com/alexkaufmanlive" aria-label="Alex Kaufman Live Facebook link"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a> | <a href="https://instagram.com/dustiestgolf" aria-label="Alex Kaufman Live Instagram link"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+        </h2>
+
+        </span>
+
+        {% endblock %}
+    </footer>
+</body>
+</html>
