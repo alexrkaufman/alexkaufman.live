@@ -6,7 +6,7 @@ meta:
   venue: Canyon Ferry Brewing
   description: Free Live Standup Comedy with Ronn Vigh at Canyon Ferry Brewing
   city: Townsend
-  state: Montana
+  state: MT
   zip_code: 59644
   street_address: 300 Broadway
 ---

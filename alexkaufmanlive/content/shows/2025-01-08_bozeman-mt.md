@@ -1,6 +1,9 @@
 ---
 title: The Short Straw
 show_date: 2025-01-08
+meta:
+  city: Bozeman
+  state: MT
 ---
 
 ![The Short Straw]({{ url_for('static', filename='Short Straw Banner.jpg') }})

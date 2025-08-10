@@ -1,6 +1,9 @@
 ---
-title: Bar Comedy USA - Spearfish, SD
+title: Bar Comedy USA
 show_date: 2025-07-11
+meta:
+  city: Spearfish
+  state: SD
 ---
 
 I am featuring on a [Bar Comedy USA](https://barcomedyusa.com/) show in Spearfish, SD.
