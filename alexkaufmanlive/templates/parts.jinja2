@@ -17,7 +17,11 @@
             </a>
         </h2>
         <div class="show-meta">
-            <div class="location">{{ show["meta"]["city"] }}, {{ show["meta"]["state"]}}</div>
+            <div class="location">
+            {% if show.meta %}
+                {{ show["meta"]["city"] }}, {{ show["meta"]["state"]}}
+            {% endif %}
+            </div>
             <time class="show-date">{{ show["show_date"] }}</time>
         </div>
     </article>

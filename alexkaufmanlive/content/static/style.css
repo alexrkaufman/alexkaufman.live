@@ -223,6 +223,11 @@ td {
 }
 
 .show-list {
+    .show {
+        padding: 0.5em 0;
+        align-items: normal;
+    }
+
     list-style: none;
     padding: unset;
 
@@ -294,11 +299,6 @@ td {
 
     .home .social-media {
         grid-template-columns: 1fr;
-    }
-
-    .show {
-        padding: 0.5em 0;
-        align-items: normal;
     }
 
     .show-head {
