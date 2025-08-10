@@ -64,7 +64,7 @@ def create_app(test_config=None):
 
         upcoming_shows = db.execute(
             (
-                "SELECT id, title, show_date, link"
+                "SELECT id, title, show_date, link, meta"
                 " FROM shows"
                 " WHERE show_date >= CURRENT_DATE"
                 " ORDER BY show_date ASC"
