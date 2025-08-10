@@ -4,6 +4,7 @@ show_date: 2025-09-10
 meta:
   venue: Brewers Kettle
   state: NC
+  city: Kernersville
 ---
 
 I will be performing on September 10th at the 2025

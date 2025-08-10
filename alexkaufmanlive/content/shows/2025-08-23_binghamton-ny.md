@@ -4,7 +4,7 @@ show_date: 2025-08-23
 meta:
   venue: Don't Tell
   city: Binghamton
-  state: New York
+  state: NY
   event_link: https://www.donttellcomedy.com/shows/binghamton-ny-08-23-25/
 ---
 

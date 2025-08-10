@@ -5,7 +5,7 @@ meta:
   venue: Enoch Pratt Library
   street_address: 120 W North Ave.
   city: Baltimore
-  state: Maryland
+  state: MD
   zip_code: 21201
 ---
 

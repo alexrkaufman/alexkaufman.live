@@ -4,7 +4,7 @@ show_date: 2025-08-22
 meta:
   venue: Don't Tell
   city: Syracuse
-  state: New York
+  state: NY
   event_link: https://www.donttellcomedy.com/shows/syracuse-14486/
 ---
 
