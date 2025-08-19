@@ -6,7 +6,9 @@
 
 <div class="page-content">
 <div class="hero-image-container" style="width: 100%; overflow: hidden; position: relative;">
+  <a href="{{ url_for('static', filename='alexkaufmancomedy-1724424682.jpg') }}">
     <img src="{{ url_for('static', filename='alexkaufmancomedy-1724424682.jpg') }}" alt="Alex Kaufman" style="width: 100%; height: 200px; object-fit: cover; transform: scale(2); position: relative; top: 60%; left: 20%;" />
+  </a>
 </div>
 
 # About
