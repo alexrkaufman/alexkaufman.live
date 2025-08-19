@@ -84,7 +84,7 @@ def create_app(test_config=None):
 
     @app.route("/epk")
     def epk():
-        """Builds the home page of the site."""
+        """Builds the home page of the site as an epk"""
 
         db = get_db()
         epk_path = pathlib.Path(current_app.root_path) / "content/epk.md"
