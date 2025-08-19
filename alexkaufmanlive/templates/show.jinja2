@@ -33,9 +33,10 @@
     <div class='show-head'>
         <h1 class='show-title'>{{ title }}</h1>
         <div class='show-meta'>
-            {% if meta.venue %}
             <div class='venue'>
-                {{ meta.venue }},
+                {% if meta.venue %}
+                    {{ meta.venue }},
+                {% endif %}
                 {% if meta.city %}
                     {{ meta.city }},
                 {% endif %}
@@ -43,7 +44,6 @@
                     {{ meta.state }}
                 {% endif %}
             </div>
-            {% endif %}
             <time class='show-date'>{{ show_date }}</time>
         </div>
     </div>

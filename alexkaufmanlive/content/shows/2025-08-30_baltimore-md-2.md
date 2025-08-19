@@ -5,7 +5,7 @@ meta:
   venue: The Royal Blue
   street_address: 1733 Maryland Ave.
   city: Baltimore
-  state: Maryland
+  state: MD
   zip_code: 21201
 ---
 

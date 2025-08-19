@@ -2,6 +2,9 @@
 title: The Short Straw
 show_date: 2025-06-11
 image: Short Straw Banner.jpg
+meta:
+  city: Bozeman
+  state: MT
 ---
 
 _efficiency_

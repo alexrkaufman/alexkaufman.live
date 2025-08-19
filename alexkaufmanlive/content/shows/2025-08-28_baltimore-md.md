@@ -4,7 +4,7 @@ show_date: 2025-08-28
 meta:
   venue: Enoch Pratt Library
   city: Baltimore
-  state: Maryland
+  state: MD
   street_address: 1251 Light Street
   zip_code: 21230
 ---
