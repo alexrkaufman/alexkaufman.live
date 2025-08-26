@@ -1,7 +1,9 @@
 ---
 title: Baltimore Comedy Festival
 show_date: 2025-08-28
+image: 2025-08-28_bcf.png
 meta:
+  event_link: http://www.baltimorecomedyfestival.com/shows--schedule.html
   venue: Enoch Pratt Library
   city: Baltimore
   state: MD
@@ -11,5 +13,6 @@ meta:
 
 I am excited to be part of the 9th annual
 [Baltimore Comedy Festival's](http://www.baltimorecomedyfestival.com/)
-Enoch Pratt Lib Showcase.
-More details to come soon!
+Enoch Pratt Library Showcase.
+
+[![Enoch Pratt Library Flier]({{ url_for('static', filename=image) }})]({{ meta.event_link }})

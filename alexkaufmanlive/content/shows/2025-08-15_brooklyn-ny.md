@@ -15,6 +15,4 @@ meta:
 
 Bushwick's longest-running Stand Up Comedy showcase.
 
-More details to come soon.
-
 https://www.instagram.com/lfoscomedy/
