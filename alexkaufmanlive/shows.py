@@ -68,6 +68,10 @@ def show(show_slug):
             "parts.jinja2",
             "tickettailor_button",
         ),
+        "email_list_cta": get_template_attribute(
+            "parts.jinja2",
+            "email_list_cta",
+        ),
     }
 
     db = get_db()

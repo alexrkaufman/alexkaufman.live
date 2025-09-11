@@ -3,10 +3,12 @@ import pathlib
 
 import frontmatter
 import mistune
+import requests
 from flask import (
     Flask,
     current_app,
     get_template_attribute,
+    jsonify,
     make_response,
     render_template,
     render_template_string,
@@ -76,6 +78,7 @@ def create_app(test_config=None):
             home.content,
             upcoming_shows=upcoming_shows,
             show_list=get_template_attribute("parts.jinja2", "show_list"),
+            email_list_cta=get_template_attribute("parts.jinja2", "email_list_cta"),
         )
 
         return render_template(
@@ -126,6 +129,43 @@ def create_app(test_config=None):
     @app.route("/blog/")
     def blog_redirect():
         return redirect("https://blog.alexkaufman.live", code=302)
+
+    @app.route("/api/subscribe", methods=["POST"])
+    def email_subscribe():
+        """Handle email subscription via Buttondown API"""
+        try:
+            email = request.form.get("email")
+            tags = request.form.getlist("tag")
+
+            if not email:
+                return jsonify({"success": False, "error": "Email is required"}), 400
+
+            # Prepare data for Buttondown API
+            data = {"email_address": email}
+            data["type"] = "regular"
+            for tag in tags:
+                data["tag"] = tag
+
+            # Make request to Buttondown API
+            url = "https://api.buttondown.com/v1/subscribers"
+            headers = {
+                "Authorization": "Token daa462da-c883-4efa-a9e3-9e080bc204b9",
+                "X-Buttondown-Collision-Behavior": "add",
+            }
+
+            response = requests.request(
+                "POST", url, headers=headers, json=data, timeout=10
+            )
+
+            if response.status_code == 201:
+                return jsonify({"success": True, "message": "Successfully subscribed!"})
+            else:
+                return jsonify({"success": False, "error": "Failed to subscribe"}), 400
+
+        except requests.RequestException:
+            return jsonify({"success": False, "error": "Network error occurred"}), 500
+        except Exception:
+            return jsonify({"success": False, "error": "An error occurred"}), 500
 
     @app.errorhandler(404)
     def page_not_found(error):

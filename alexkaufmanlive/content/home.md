@@ -18,6 +18,10 @@ Since then, he’s featured for Kyle Kinane, Sean Patton, and more, and performe
 
 </div>
 
+## Join my email list
+
+{{ email_list_cta() }}
+
 ## Social Media
 
 <div class="social-media">

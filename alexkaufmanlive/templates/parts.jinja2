@@ -71,3 +71,76 @@ document.addEventListener('DOMContentLoaded', function () {
 {% macro event_button(event_link) -%}
 <a href="{{ event_link }}"><button id="event-button" type="button">buy tickets</button></a>
 {%- endmacro %}
+
+
+{% macro email_list_cta(tags) -%}
+<button type="button" id="email-signup-button">join email list</button>
+
+<div id="email-modal" class="modal">
+  <div class="modal-content">
+    <h3>Join Email List</h3>
+    <form id="email-form">
+      <label for="modal-email">Enter your email</label>
+      <input type="email" name="email" id="modal-email" required />
+      <div class="modal-buttons">
+        <button type="button" id="email-modal-close">cancel</button>
+        <button type="submit" id="email-submit">join</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const button = document.getElementById('email-signup-button');
+  const modal = document.getElementById('email-modal');
+  const closeButton = document.getElementById('email-modal-close');
+  const form = document.getElementById('email-form');
+
+  button.addEventListener('click', function() {
+    modal.style.display = 'block';
+  });
+
+  closeButton.addEventListener('click', function() {
+    modal.style.display = 'none';
+  });
+
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    fetch('{{ url_for("email_subscribe") }}', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        document.querySelector('.modal-content').innerHTML = '<h3>Success!</h3><p>' + data.message + '</p><div class="modal-buttons"><button type="button" id="email-modal-close">close</button></div>';
+        document.getElementById('email-modal-close').addEventListener('click', function() {
+          modal.style.display = 'none';
+          location.reload();
+        });
+      } else {
+        document.querySelector('.modal-content').innerHTML = '<h3>Error</h3><p>' + (data.error || 'Error subscribing. Please try again.') + '</p><div class="modal-buttons"><button type="button" id="email-modal-close">try again</button></div>';
+        document.getElementById('email-modal-close').addEventListener('click', function() {
+          location.reload();
+        });
+      }
+    })
+    .catch(error => {
+      document.querySelector('.modal-content').innerHTML = '<h3>Error</h3><p>Error subscribing. Please try again.</p><div class="modal-buttons"><button type="button" id="email-modal-close">try again</button></div>';
+      document.getElementById('email-modal-close').addEventListener('click', function() {
+        location.reload();
+      });
+    });
+  });
+});
+</script>
+{%- endmacro %}
