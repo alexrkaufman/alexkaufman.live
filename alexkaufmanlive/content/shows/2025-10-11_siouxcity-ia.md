@@ -23,7 +23,7 @@ Tickets aren't live yet but if you join my email list I'll let you know when the
 
 ## About the Show
 
-If you haven't heard of me, hello nice to meet you! I am a standup comedian from Montana on tour coming to Lincoln, Nebraska. I used to do physics research but decided instead to tell jokes while waiting for the heat death of the universe. My mom was not thrilled.
+If you haven't heard of me, hello nice to meet you! I am a standup comedian from Montana on tour coming to Sioux City, Iowa. I used to do physics research but decided instead to tell jokes while waiting for the heat death of the universe. My mom was not thrilled.
 
 Don't let the physics background scare you away. I promise not to talk about physics (much) and I wont make you do any math, or your money back! How many other physicists have you met who can make that promise? If you want to learn more about me I trust you to be able to click links on this site or send me an email.
 
