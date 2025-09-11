@@ -9,9 +9,9 @@ meta:
   show_time: tbd
 ---
 
-Tickets aren't live yet but if you join my email list I'll let you know when they go up.
-
 {{ email_list_cta(tags=["Sioux Falls"]) }}
+
+Tickets aren't live yet but if you join my email list I'll let you know when they go up.
 
 ## Critial Information
 
