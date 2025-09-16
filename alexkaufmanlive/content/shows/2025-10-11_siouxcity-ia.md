@@ -7,11 +7,10 @@ meta:
   state: IA
   city: Seargent Bluff
   show_time: tbd
+  event_link: https://www.comedyticketing.com/events/comedy-night-at-eddie-s-tavern-with-alex-kaufman-tickets-mlKZcY6SvqPf3bkhHqCH
 ---
 
-{{ email_list_cta(tags=["Sioux Falls"]) }}
-
-Tickets aren't live yet but if you join my email list I'll let you know when they go up.
+{{ event_button(meta.event_link) }}
 
 ## Critial Information
 
@@ -27,11 +26,10 @@ If you haven't heard of me, hello nice to meet you! I am a standup comedian from
 
 Don't let the physics background scare you away. I promise not to talk about physics (much) and I wont make you do any math, or your money back! How many other physicists have you met who can make that promise? If you want to learn more about me I trust you to be able to click links on this site or send me an email.
 
-This is not a one man effort. There will be other great comedians performing on the show to make sure you have the best night possible. These performers are excellent comedians from right in your back yard and I'm excited you will get to see them perform.
+**Feature**: Ocho De La Rosa
+Ocho De La Rosa is a little comedian with a big mouth and even bigger heart. Originally from San Antonio, TX and now residing in Omaha, De La Rosa gives a performance that is unique and relatable; and while it leaves crowds laughing, it also leaves them questioning their sanity and maybe their sexuality. De La Rosa seamlessly blends their quirky charm and quick wit in performances across many Midwest bar stages and the occasional comedy club. De La Rosa puts their heart on the stage the same way they put their backwards hat on their head- intentionally fumbled.
 
-- Breanna Kalhorn
-- Penelope Flowers
-- Colton Hoferer
-- Kris Marshall
+**Host**: Drake Strong
+Drake Strong born and raised in Sioux City, and co-runner of Siouxland Comedy has preformed across the miswesr and opened for Kevin Farley and Steven Michael Quezada. He jokes about his life, family, and observations of the world woth a dark twiat at times.
 
-This show is produced by [@gucci.thangs](https://www.instagram.com/gucci.thangs/). Follow them for more great shows!
+This show is produced by [Siouxland Comedy](https://siouxlandcomedy.com/). Follow them for more great shows!
