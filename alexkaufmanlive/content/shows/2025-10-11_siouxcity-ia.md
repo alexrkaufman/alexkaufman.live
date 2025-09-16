@@ -30,6 +30,6 @@ Don't let the physics background scare you away. I promise not to talk about phy
 Ocho De La Rosa is a little comedian with a big mouth and even bigger heart. Originally from San Antonio, TX and now residing in Omaha, De La Rosa gives a performance that is unique and relatable; and while it leaves crowds laughing, it also leaves them questioning their sanity and maybe their sexuality. De La Rosa seamlessly blends their quirky charm and quick wit in performances across many Midwest bar stages and the occasional comedy club. De La Rosa puts their heart on the stage the same way they put their backwards hat on their head- intentionally fumbled.
 
 **Host**: Drake Strong
-Drake Strong born and raised in Sioux City, and co-runner of Siouxland Comedy has preformed across the miswesr and opened for Kevin Farley and Steven Michael Quezada. He jokes about his life, family, and observations of the world woth a dark twiat at times.
+Drake Strong born and raised in Sioux City, and co-runner of Siouxland Comedy has preformed across the miswesr and opened for Kevin Farley and Steven Michael Quezada. He jokes about his life, family, and observations of the world woth a dark twist at times.
 
 This show is produced by [Siouxland Comedy](https://siouxlandcomedy.com/). Follow them for more great shows!
