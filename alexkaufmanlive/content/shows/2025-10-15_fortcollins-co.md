@@ -1,6 +1,7 @@
 ---
 title: The Gateway Show
 show_date: 2025-10-15
+redirect: https://gateway.multipass.com/focooct
 meta:
   city: Fort Collins
   state: CO
