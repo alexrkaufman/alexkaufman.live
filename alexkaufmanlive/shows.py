@@ -4,6 +4,7 @@ from flask import (
     Blueprint,
     abort,
     get_template_attribute,
+    redirect,
     render_template,
     render_template_string,
 )
@@ -80,6 +81,9 @@ def show(show_slug):
 
     if not show:
         abort(404)
+
+    if show["redirect"] is not None:
+        return redirect(show["redirect"], code=302)
 
     show = dict(show)
     show["content"] = render_page(
