@@ -6,7 +6,7 @@ meta:
   street_address: 407 D St.
   state: IA
   city: Seargent Bluff
-  show_time: tbd
+  show_time: 8:00pm
   event_link: https://www.comedyticketing.com/events/comedy-night-at-eddie-s-tavern-with-alex-kaufman-tickets-mlKZcY6SvqPf3bkhHqCH
 ---
 

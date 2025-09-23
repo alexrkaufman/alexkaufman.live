@@ -1,5 +1,5 @@
 ---
-title: "Zootenany presents: Gary Curtis"
+title: "Zootenanny presents: Gary Curtis"
 show_date: 2025-10-12
 meta:
   city: Lincoln
