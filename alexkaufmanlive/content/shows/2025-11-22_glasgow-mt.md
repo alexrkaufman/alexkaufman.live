@@ -1,6 +1,6 @@
 ---
 title: "Bar Comedy USA: Glasgow, MT"
-show_date: 2025-10-25
+show_date: 2025-11-22
 meta:
   city: Glasgow
   state: MT
