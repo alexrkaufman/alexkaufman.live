@@ -9,3 +9,5 @@ meta:
   state: TN
   zip_code: 37204
 ---
+
+New Material Mondays is a weekly series at Zanies Nashville featuring comedians from Nashville and beyond. Lineups will never be announced but are guaranteed to be incredible. Nashville is bursting with an influx of new talent and home to nationally touring headliners. This show is an opportunity for these comedians to work out their new material. Be a part of one of the greatest and fastest-growing comedy scenes in the nation!
