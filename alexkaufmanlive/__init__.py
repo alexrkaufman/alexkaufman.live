@@ -1,3 +1,5 @@
+"""Flask application factory."""
+
 import os
 
 from flask import (
@@ -12,37 +14,40 @@ site_metadata = {
 
 
 def create_app(test_config=None):
-    # create and configure the app
+    """Create and configure the Flask application."""
     app = Flask(__name__, instance_relative_config=True, static_folder="content/static")
+
+    # Default configuration
     app.config.from_mapping(
         SECRET_KEY="dev",
         DATABASE=os.path.join(app.instance_path, "alexkaufmanlive.sqlite"),
     )
 
     if test_config is None:
-        # load the instance config, if it exists, when not testing
+        # Load instance config if it exists
         app.config.from_pyfile("config.py", silent=True)
     else:
-        # load the test config if passed in
+        # Load test config
         app.config.from_mapping(test_config)
 
-    # ensure the instance folder exists
+    # Ensure instance folder exists
     try:
         os.makedirs(app.instance_path)
     except OSError:
         pass
 
+    # Register context processor
     @app.context_processor
     def inject_sitename():
         return site_metadata
 
+    # Register error handlers
     @app.errorhandler(404)
     def page_not_found(error):
         content = {
             "error_code": "404",
             "error_message": "I couldnt find the page you were looking for, but I appreciate you believing in me. ",
         }
-
         return render_template("error.jinja2", **content), 404
 
     @app.errorhandler(500)
@@ -59,6 +64,7 @@ def create_app(test_config=None):
     app.register_blueprint(main.bp)
     app.register_blueprint(shows.bp)
 
+    # Initialize database
     from . import db
 
     db.init_app(app)
