@@ -1,6 +1,9 @@
 """Main application routes."""
 
+import hashlib
+import hmac
 import pathlib
+import subprocess
 
 import frontmatter
 from flask import (
@@ -103,9 +106,73 @@ def email_subscribe():
     email = request.form.get("email")
     tags = request.form.getlist("tag")
 
-    success, message, status_code = subscribe_to_buttondown(email, tags)
+    success, message, status_code = subscribe_to_buttondown(
+        email, tags, api_key=current_app.config.get("BUTTONDOWN_API_TOKEN")
+    )
 
     if success:
         return jsonify({"success": True, "message": message}), status_code
     else:
         return jsonify({"success": False, "error": message}), status_code
+
+
+@bp.route("/git_update", methods=["POST"])
+def git_update():
+    """Handle GitHub webhook for automatic deployment."""
+    # Verify the request is from GitHub using the secret token
+    secret = current_app.config.get("GITHUB_WEBHOOK_SECRET")
+    if not secret:
+        current_app.logger.error("GITHUB_WEBHOOK_SECRET not configured")
+        return jsonify({"error": "Webhook not configured"}), 500
+
+    # Get the signature from the request headers
+    signature_header = request.headers.get("X-Hub-Signature-256")
+    if not signature_header:
+        current_app.logger.warning("Missing X-Hub-Signature-256 header")
+        return jsonify({"error": "Unauthorized"}), 401
+
+    # Verify the signature
+    hash_object = hmac.new(
+        secret.encode("utf-8"), msg=request.data, digestmod=hashlib.sha256
+    )
+    expected_signature = "sha256=" + hash_object.hexdigest()
+
+    if not hmac.compare_digest(expected_signature, signature_header):
+        current_app.logger.warning("Invalid signature")
+        return jsonify({"error": "Unauthorized"}), 401
+
+    # Parse the JSON payload
+    payload = request.json
+    if not payload:
+        return jsonify({"error": "Invalid payload"}), 400
+
+    # Only deploy on pushes to the main branch
+    ref = payload.get("ref")
+    if ref != "refs/heads/main":
+        return jsonify({"message": f"Ignoring push to {ref}"}), 200
+
+    # Run the update script
+    try:
+        current_app.logger.info("Running deployment script...")
+        result = subprocess.run(
+            ["/home/dustiestgolf/alexkaufmanlive/update-site.sh"],
+            capture_output=True,
+            text=True,
+            timeout=60,
+        )
+
+        if result.returncode == 0:
+            current_app.logger.info(f"Deployment successful: {result.stdout}")
+            return jsonify(
+                {"message": "Deployment successful", "output": result.stdout}
+            ), 200
+        else:
+            current_app.logger.error(f"Deployment failed: {result.stderr}")
+            return jsonify({"error": "Deployment failed", "output": result.stderr}), 500
+
+    except subprocess.TimeoutExpired:
+        current_app.logger.error("Deployment script timed out")
+        return jsonify({"error": "Deployment timeout"}), 500
+    except Exception as e:
+        current_app.logger.error(f"Deployment error: {str(e)}")
+        return jsonify({"error": str(e)}), 500

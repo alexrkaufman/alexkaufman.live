@@ -7,6 +7,8 @@ from flask import (
     render_template,
 )
 
+from .config import Config
+
 site_metadata = {
     "site_name": "alexkaufman.live",
     "tagline": "standup comic/former physicist",
@@ -17,14 +19,16 @@ def create_app(test_config=None):
     """Create and configure the Flask application."""
     app = Flask(__name__, instance_relative_config=True, static_folder="content/static")
 
-    # Default configuration
+    # Load configuration from 1Password
     app.config.from_mapping(
-        SECRET_KEY="dev",
-        DATABASE=os.path.join(app.instance_path, "alexkaufmanlive.sqlite"),
+        SECRET_KEY=Config.SECRET_KEY,
+        DATABASE=os.path.join(app.instance_path, Config.DATABASE),
+        GITHUB_WEBHOOK_SECRET=Config.GITHUB_WEBHOOK_SECRET,
+        BUTTONDOWN_API_TOKEN=Config.BUTTONDOWN_API_TOKEN,
     )
 
     if test_config is None:
-        # Load instance config if it exists
+        # Load instance config if it exists (can override 1Password values)
         app.config.from_pyfile("config.py", silent=True)
     else:
         # Load test config
