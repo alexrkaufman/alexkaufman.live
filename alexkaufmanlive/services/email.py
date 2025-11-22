@@ -3,7 +3,7 @@
 import requests
 
 
-def subscribe_to_buttondown(email, tags=None, api_token=None):
+def subscribe_to_buttondown(email: str, tags: list[str] | None = None, api_token: str | None = None):
     """
     Subscribe an email to Buttondown newsletter.
 
