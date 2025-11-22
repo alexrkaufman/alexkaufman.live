@@ -19,7 +19,7 @@ class Config:
     # Format: op://vault/item/field
     _SECRET_REFS = {
         "SECRET_KEY": "op://alexkaufman.live/prod_site/secret_key",
-        "DOMAIN": "op://alexkaufman.live/prod_site/database",
+        "DATABASE": "op://alexkaufman.live/prod_site/database",
         "GITHUB_WEBHOOK_SECRET": "op://alexkaufman.live/github-webhook/secret",
         "BUTTONDOWN_API_TOKEN": "op://alexkaufman.live/buttondown/api-token",
     }
