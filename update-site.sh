@@ -2,12 +2,7 @@
 
 source "/home/dustiestgolf/.virtualenvs/base/bin/activate"
 
-pushd "/home/dustiestgolf/md-webapp"
-pushd "/home/dustiestgolf/md-webapp/alexkaufmanlive/content"
-
-git fetch
-git reset --hard origin/main
-popd
+pushd "/home/dustiestgolf/alexkaufmanlive"
 
 git fetch
 git reset --hard origin/main
