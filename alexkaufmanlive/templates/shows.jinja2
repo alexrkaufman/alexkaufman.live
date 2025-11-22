@@ -1,8 +1,25 @@
 {% extends "base.jinja2" %}
 {% block title %} shows | {{ site_name }} {% endblock %}
 {% block main %}
+
     <h1> Upcoming Shows </h1>
     {{ show_list(upcoming_shows) }}
-    <h1> Past Shows </h1>
+
+    <h1> Past Shows {% if has_prev %}(page {{page}}){% endif %} </h1>
     {{ show_list(past_shows) }}
+
+    {%- if has_prev or has_next -%}
+    <div class="pagination">
+        <div>
+        {%- if has_prev -%}
+            <a href="{{ url_for('shows.index', page=page-1) }}" class="pagination-prev">← Previous</a>
+        {%- endif -%}
+        </div>
+        <div>
+        {%- if has_next -%}
+            <a href="{{ url_for('shows.index', page=page+1) }}" class="pagination-next">Next →</a>
+        {%- endif -%}
+        </div>
+    </div>
+    {%- endif -%}
 {% endblock %}

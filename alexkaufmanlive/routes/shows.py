@@ -6,6 +6,7 @@ from flask import (
     get_template_attribute,
     redirect,
     render_template,
+    request,
 )
 
 from ..db import get_db
@@ -23,8 +24,13 @@ def inject_sitename():
 
 @bp.route("/")
 def index():
-    """Show list page."""
+    """Show list page with pagination for past shows."""
     db = get_db()
+
+    # Get page number from query params (default to 1)
+    page = request.args.get('page', 1, type=int)
+    per_page = 10
+    offset = (page - 1) * per_page
 
     upcoming_shows = db.execute(
         (
@@ -34,19 +40,30 @@ def index():
             " ORDER BY show_date ASC"
         )
     ).fetchall()
+
+    # Fetch one extra to determine if there are more pages
     past_shows = db.execute(
         (
             "SELECT id, title, show_date, link, meta"
             " FROM shows"
             " WHERE show_date < CURRENT_DATE"
             " ORDER BY show_date DESC"
-        )
+            " LIMIT ? OFFSET ?"
+        ),
+        (per_page + 1, offset)
     ).fetchall()
+
+    # Check if there are more results
+    has_next = len(past_shows) > per_page
+    past_shows = past_shows[:per_page]  # Trim to exactly per_page items
 
     return render_template(
         "shows.jinja2",
         upcoming_shows=upcoming_shows,
         past_shows=past_shows,
+        page=page,
+        has_prev=page > 1,
+        has_next=has_next,
         title="alexkaufman.live | shows",
     )
 

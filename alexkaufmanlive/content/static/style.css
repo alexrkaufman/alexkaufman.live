@@ -274,6 +274,13 @@ td {
     flex: 0 0 auto;
 }
 
+/* Pagination Styles */
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
 /* Modal Styles */
 .modal {
     display: none;
