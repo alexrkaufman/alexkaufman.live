@@ -107,7 +107,7 @@ def email_subscribe():
     tags = request.form.getlist("tag")
 
     success, message, status_code = subscribe_to_buttondown(
-        email, tags, api_key=current_app.config.get("BUTTONDOWN_API_TOKEN")
+        email, tags, api_token=current_app.config.get("BUTTONDOWN_API_TOKEN")
     )
 
     if success:
