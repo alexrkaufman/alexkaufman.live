@@ -77,7 +77,9 @@ def show(show_slug):
 
     db = get_db()
 
-    show = db.execute(f"SELECT * FROM shows WHERE link='{show_slug}'").fetchone()
+    show = db.execute(
+        "SELECT * FROM shows WHERE link=:link", {"link": show_slug}
+    ).fetchone()
 
     if not show:
         abort(404)
