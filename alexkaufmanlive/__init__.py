@@ -19,7 +19,10 @@ def create_app(test_config=None):
     """Create and configure the Flask application."""
     app = Flask(__name__, instance_relative_config=True, static_folder="content/static")
 
-    # Load configuration from 1Password
+    # Disable auto-escaping since all content is controlled by site owner
+    app.jinja_env.autoescape = False
+
+    # Load configuration
     app.config.from_mapping(
         SECRET_KEY=Config.SECRET_KEY,
         DATABASE=os.path.join(app.instance_path, Config.DATABASE),

@@ -6,7 +6,6 @@ from flask import (
     get_template_attribute,
     redirect,
     render_template,
-    render_template_string,
 )
 
 from ..db import get_db
@@ -88,7 +87,5 @@ def show(show_slug):
         return redirect(show["redirect"], code=302)
 
     show = dict(show)
-    show["content"] = render_page(
-        render_template_string(show["content"], **show, **macros)
-    )
+    show["content"] = render_page(show.pop("content"), **show, **macros)
     return render_template("show.jinja2", **show)
