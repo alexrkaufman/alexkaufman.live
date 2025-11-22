@@ -3,13 +3,15 @@
 
 :root {
     --width: 720px;
-    --font-main: "Space Grotesk", monospace;
-    --font-secondary: "Space Grotesk", monospace;
+    --font-main: "Space Grotesk";
+    --font-secondary: "Space Grotesk";
     --font-scale: 1em;
-    --background-color: #17161e;
+    --background-color: #222129;
+    /* --background-color: #170c01; */
     --heading-color: #ff9549;
-    --text-color: #ff9549;
-    --link-color: #ff9549;
+    --accent-color-1: #ff9549;
+    --text-color: #fff7eb;
+    --link-color: #fff7eb;
     --visited-color: #bc8d6b;
     --code-background-color: #bc8d6b;
     --code-color: #17161e;
@@ -53,17 +55,12 @@ main {
     margin-top: 40px;
     margin-bottom: 20px;
     padding: 30px;
-    border: 1px solid var(--link-color);
-    text-wrap: balance;
+    border: 1px solid var(--accent-color-1);
+    text-wrap: auto;
 }
 
 nav a {
     margin-right: 8px;
-}
-
-strong,
-b {
-    color: var(--heading-color);
 }
 
 button {
