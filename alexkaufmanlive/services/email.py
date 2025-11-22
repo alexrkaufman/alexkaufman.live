@@ -3,7 +3,9 @@
 import requests
 
 
-def subscribe_to_buttondown(email: str, tags: list[str] | None = None, api_token: str | None = None):
+def subscribe_to_buttondown(
+    email: str, tags: list[str] | None = None, api_token: str | None = None
+):
     """
     Subscribe an email to Buttondown newsletter.
 
@@ -21,11 +23,15 @@ def subscribe_to_buttondown(email: str, tags: list[str] | None = None, api_token
     if not api_token:
         return False, "Buttondown API Token not set.", 500
 
+    if tags is None:
+        tags = []
+
     # Prepare data for Buttondown API
-    data = {"email_address": email, "type": "regular"}
-    if tags:
-        for tag in tags:
-            data["tag"] = tag
+    data = {
+        "email_address": email,
+        "type": "regular",
+        "tags": tags,
+    }
 
     # Make request to Buttondown API
     url = "https://api.buttondown.com/v1/subscribers"
