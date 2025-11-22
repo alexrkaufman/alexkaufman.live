@@ -2,7 +2,6 @@ import os
 import pathlib
 
 import frontmatter
-import requests
 from flask import (
     Flask,
     current_app,
@@ -15,6 +14,7 @@ from flask import (
 from flask.helpers import redirect
 
 from .db import get_db
+from .services.email import subscribe_to_buttondown
 from .services.markdown import render_page
 
 site_metadata = {
@@ -123,40 +123,16 @@ def create_app(test_config=None):
 
     @app.route("/api/subscribe", methods=["POST"])
     def email_subscribe():
-        """Handle email subscription via Buttondown API"""
-        try:
-            email = request.form.get("email")
-            tags = request.form.getlist("tag")
+        """Handle email subscription via Buttondown API."""
+        email = request.form.get("email")
+        tags = request.form.getlist("tag")
 
-            if not email:
-                return jsonify({"success": False, "error": "Email is required"}), 400
+        success, message, status_code = subscribe_to_buttondown(email, tags)
 
-            # Prepare data for Buttondown API
-            data = {"email_address": email}
-            data["type"] = "regular"
-            for tag in tags:
-                data["tag"] = tag
-
-            # Make request to Buttondown API
-            url = "https://api.buttondown.com/v1/subscribers"
-            headers = {
-                "Authorization": "Token daa462da-c883-4efa-a9e3-9e080bc204b9",
-                "X-Buttondown-Collision-Behavior": "add",
-            }
-
-            response = requests.request(
-                "POST", url, headers=headers, json=data, timeout=10
-            )
-
-            if response.status_code == 201:
-                return jsonify({"success": True, "message": "Successfully subscribed!"})
-            else:
-                return jsonify({"success": False, "error": "Failed to subscribe"}), 400
-
-        except requests.RequestException:
-            return jsonify({"success": False, "error": "Network error occurred"}), 500
-        except Exception:
-            return jsonify({"success": False, "error": "An error occurred"}), 500
+        if success:
+            return jsonify({"success": True, "message": message}), status_code
+        else:
+            return jsonify({"success": False, "error": message}), status_code
 
     @app.errorhandler(404)
     def page_not_found(error):
