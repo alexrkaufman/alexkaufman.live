@@ -2,7 +2,13 @@
 name = "alexkaufmanlive"
 version = "0.0.0"
 description = "My comedy website."
-dependencies = ["flask"]
+dependencies = [
+    "flask>=2.3.0",
+    "click>=8.0.0",
+    "python-frontmatter>=1.0.0",
+    "mistune>=3.0.0",
+    "requests>=2.28.0"
+]
 
 [build-system]
 requires = ["flit_core<4"]
