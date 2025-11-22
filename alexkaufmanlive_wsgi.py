@@ -4,6 +4,6 @@ path = "/home/dustiestgolf/alexkaufmanlive"
 if path not in sys.path:
     sys.path.insert(0, path)
 
-from . import create_app
+from alexkaufmanlive import create_app
 
 application = create_app()
