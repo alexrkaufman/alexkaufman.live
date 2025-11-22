@@ -29,6 +29,7 @@ def create_app(test_config=None):
         GITHUB_WEBHOOK_SECRET=Config.GITHUB_WEBHOOK_SECRET,
         BUTTONDOWN_API_TOKEN=Config.BUTTONDOWN_API_TOKEN,
     )
+    app.logger.setLevel(Config.LOG_LEVEL)
 
     if test_config is None:
         # Load instance config if it exists (can override 1Password values)

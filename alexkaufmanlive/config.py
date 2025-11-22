@@ -1,19 +1,46 @@
-"""Application configuration with 1Password integration."""
+"""Application configuration with dev and prod environments."""
 
 import asyncio
+import logging
 import os
 
 from onepassword.client import Client
 
 
-class Config:
-    """Application configuration loaded from 1Password."""
+class BaseConfig:
+    """Base configuration shared by all environments."""
+
+    # Database
+    DATABASE: str = "alexkaufmanlive.sqlite"
+
+    # Logging
+    LOG_LEVEL: int = logging.INFO
+
+
+class DevConfig(BaseConfig):
+    """Development configuration."""
+
+    # Security
+    SECRET_KEY: str = "dev-secret-key-not-for-production"
+
+    # External services (disabled in dev)
+    GITHUB_WEBHOOK_SECRET: str | None = None
+    BUTTONDOWN_API_TOKEN: str | None = None
+
+    # Logging
+    LOG_LEVEL: int = logging.DEBUG
+
+
+class ProdConfig(BaseConfig):
+    """Production configuration loaded from 1Password."""
 
     # Default values (used if 1Password is not available)
     SECRET_KEY: str = "dev"
-    DATABASE: str | None = "alexkaufmanlive.sqlite"
     GITHUB_WEBHOOK_SECRET: str | None = None
     BUTTONDOWN_API_TOKEN: str | None = None
+
+    # Logging
+    LOG_LEVEL: int = logging.WARNING
 
     # 1Password secret references
     # Format: op://vault/item/field
@@ -69,13 +96,13 @@ class Config:
             print(f"Error loading secrets: {e}")
             print("Using default configuration values")
 
-    @classmethod
-    def from_object(cls, obj):
-        """Load configuration from an object (for compatibility with Flask)."""
-        for key in dir(obj):
-            if key.isupper():
-                setattr(cls, key, getattr(obj, key))
 
+# Determine which config to use based on environment variable
+# Default to dev for safety
+environment = os.getenv("FLASK_ENV", "development")
 
-# Load secrets when module is imported
-Config.load_secrets()
+if environment == "production":
+    Config = ProdConfig
+    Config.load_secrets()
+else:
+    Config = DevConfig
