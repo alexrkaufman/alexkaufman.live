@@ -1,6 +1,6 @@
 #! /usr/bin/bash
 
-source "/home/dustiestgolf/.virtualenvs/base/bin/activate"
+source "/home/dustiestgolf/venv/bin/activate"
 
 pushd "/home/dustiestgolf/alexkaufmanlive"
 
