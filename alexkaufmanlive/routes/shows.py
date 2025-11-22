@@ -9,8 +9,8 @@ from flask import (
     render_template_string,
 )
 
-from . import render_page
-from .db import get_db
+from ..db import get_db
+from ..services.markdown import render_page
 
 bp = Blueprint("shows", __name__, url_prefix="/shows")
 shows_path = pathlib.Path("shows/")

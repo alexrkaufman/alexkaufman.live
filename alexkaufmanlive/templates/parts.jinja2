@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
     e.preventDefault();
     const formData = new FormData(form);
 
-    fetch('{{ url_for("email_subscribe") }}', {
+    fetch('{{ url_for("main.email_subscribe") }}', {
       method: 'POST',
       body: formData
     })
