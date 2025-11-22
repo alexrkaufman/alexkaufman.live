@@ -53,8 +53,8 @@ def create_app(test_config=None):
         }
         return render_template("error.jinja2", **content), 500
 
-    from . import shows
-    from .routes import main
+    # Register blueprints
+    from .routes import main, shows
 
     app.register_blueprint(main.bp)
     app.register_blueprint(shows.bp)
