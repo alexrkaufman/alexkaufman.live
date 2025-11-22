@@ -2,7 +2,6 @@ import os
 import pathlib
 
 import frontmatter
-import mistune
 import requests
 from flask import (
     Flask,
@@ -11,25 +10,17 @@ from flask import (
     jsonify,
     make_response,
     render_template,
-    render_template_string,
     request,
 )
 from flask.helpers import redirect
-from mistune.directives import FencedDirective, Image
 
 from .db import get_db
+from .services.markdown import render_page
 
 site_metadata = {
     "site_name": "alexkaufman.live",
     "tagline": "standup comic/former physicist",
 }
-
-markdown = mistune.create_markdown(
-    plugins=[
-        FencedDirective([Image()]),
-    ],
-    escape=False,
-)
 
 
 def create_app(test_config=None):
@@ -193,7 +184,3 @@ def create_app(test_config=None):
     db.init_app(app)
 
     return app
-
-
-def render_page(content, **kwargs):
-    return render_template_string(markdown(content), **kwargs)
