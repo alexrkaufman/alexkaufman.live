@@ -66,7 +66,7 @@ def sitemap():
     urls = list()
     # Static routes with static content
     for rule in current_app.url_map.iter_rules():
-        if "GET" in rule.methods and len(rule.arguments) == 0:
+        if rule.methods and "GET" in rule.methods and len(rule.arguments) == 0:
             url = {"loc": f"{host_base}{str(rule)}"}
             urls.append(url)
 
