@@ -37,6 +37,11 @@ During undergrad he founded the now iconic Bob's Comedy Jive and during grad sch
 [<i class="fa-brands fa-instagram"></i> instagram](https://instagram.com/alexkaufmanlive)
 
 </div>
+<div class="social-media-item">
+
+[<i class="fa-brands fa-youtube"></i> youtube](https://youtube.com/@alexkaufmanlive)
+
+</div>
 </div>
 
 # Press
