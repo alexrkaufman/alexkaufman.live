@@ -2,7 +2,7 @@
   <img src="{{ url_for('static', filename='alexkaufmancomedy-1724424682.jpg') }}" alt="Alex Kaufman Comedy">
 </a>
 
-**hello world**
+**{{ tagline }}**
 
 # Upcoming Shows
 
