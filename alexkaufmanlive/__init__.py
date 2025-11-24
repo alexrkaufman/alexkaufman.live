@@ -7,7 +7,7 @@ from flask import (
     render_template,
 )
 
-from .config import Config
+from .config import DevConfig, ProdConfig
 
 site_metadata = {
     "site_name": "alexkaufman.live",
@@ -15,9 +15,15 @@ site_metadata = {
 }
 
 
-def create_app(config: Config):
+def create_app():
     """Create and configure the Flask application."""
+
     app = Flask(__name__, instance_relative_config=True, static_folder="content/static")
+
+    if os.getenv("FLASK_ENV") == "production":
+        config = ProdConfig()
+    else:
+        config = DevConfig()
 
     # Disable auto-escaping since all content is controlled by site owner
     app.jinja_env.autoescape = False
