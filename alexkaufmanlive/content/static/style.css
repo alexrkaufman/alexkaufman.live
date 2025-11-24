@@ -40,6 +40,20 @@ h5,
 h6 {
     font-family: var(--font-main);
     color: var(--heading-color);
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 500;
 }
 
 a {
@@ -57,6 +71,7 @@ main {
     padding: 30px;
     border: 1px solid var(--accent-color-1);
     text-wrap: auto;
+    font-weight: 300;
 }
 
 nav a {
@@ -115,6 +130,7 @@ blockquote {
 footer {
     text-align: center;
     opacity: 0.8;
+    color: var(--text-color);
 }
 
 .title:hover {
@@ -187,6 +203,10 @@ td {
 .shows span:has(time),
 .post p:has(time) {
     display: none;
+}
+
+.shows h1 {
+    margin-top: 0;
 }
 
 .gallery {
@@ -334,6 +354,9 @@ td {
 }
 
 @media only screen and (max-width: 767px) {
+    body {
+        padding: 10px;
+    }
     main {
         padding: 20px;
         margin-top: 30px;
