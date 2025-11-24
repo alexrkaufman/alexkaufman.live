@@ -2,7 +2,7 @@
 
 source "/home/dustiestgolf/venv/bin/activate"
 
-pushd "/home/dustiestgolf/alexkaufmanlive"
+pushd "/home/dustiestgolf/alexkaufman.live"
 
 git fetch
 git reset --hard origin/main

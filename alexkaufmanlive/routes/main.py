@@ -155,7 +155,7 @@ def git_update():
     try:
         current_app.logger.info("Running deployment script...")
         result = subprocess.run(
-            ["/home/dustiestgolf/alexkaufmanlive/update-site.sh"],
+            ["/home/dustiestgolf/alexkaufman.live/update-site.sh"],
             capture_output=True,
             text=True,
             timeout=60,
