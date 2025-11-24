@@ -28,7 +28,7 @@ def index():
     db = get_db()
 
     # Get page number from query params (default to 1)
-    page = request.args.get('page', 1, type=int)
+    page = request.args.get("page", 1, type=int)
     per_page = 10
     offset = (page - 1) * per_page
 
@@ -50,7 +50,7 @@ def index():
             " ORDER BY show_date DESC"
             " LIMIT ? OFFSET ?"
         ),
-        (per_page + 1, offset)
+        (per_page + 1, offset),
     ).fetchall()
 
     # Check if there are more results

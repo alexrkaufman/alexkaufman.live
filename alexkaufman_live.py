@@ -4,7 +4,6 @@ from alexkaufmanlive import create_app
 
 load_dotenv(".env")
 
-
 application = create_app()
 
 if __name__ == "__main__":
