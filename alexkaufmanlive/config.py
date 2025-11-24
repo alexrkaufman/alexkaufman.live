@@ -3,106 +3,70 @@
 import asyncio
 import logging
 import os
+from dataclasses import dataclass
 
 from onepassword.client import Client
 
+SECRET_REFS = {
+    "SECRET_KEY": "op://alexkaufman.live/prod_site/secret_key",
+    "DATABASE": "op://alexkaufman.live/prod_site/database",
+    "GITHUB_WEBHOOK_SECRET": "op://alexkaufman.live/github-webhook/secret",
+    "BUTTONDOWN_API_TOKEN": "op://alexkaufman.live/buttondown/api-token",
+}
 
-class BaseConfig:
+
+@dataclass
+class Config:
     """Base configuration shared by all environments."""
 
-    # Database
-    DATABASE: str = "alexkaufmanlive.sqlite"
-
-    # Logging
-    LOG_LEVEL: int = logging.INFO
-
-
-class DevConfig(BaseConfig):
-    """Development configuration."""
-
-    # Security
-    SECRET_KEY: str = "dev-secret-key-not-for-production"
-
-    # External services (disabled in dev)
-    GITHUB_WEBHOOK_SECRET: str | None = None
-    BUTTONDOWN_API_TOKEN: str | None = None
-
-    # Logging
-    LOG_LEVEL: int = logging.DEBUG
+    database: str
+    secret_key: str
+    github_webhook_secret: str | None
+    buttondown_api_token: str | None
+    log_level: int
 
 
-class ProdConfig(BaseConfig):
-    """Production configuration loaded from 1Password."""
+@dataclass
+class DevConfig(Config):
+    """Development configuration with safe defaults."""
 
-    # Default values (used if 1Password is not available)
-    SECRET_KEY: str = "dev"
-    GITHUB_WEBHOOK_SECRET: str | None = None
-    BUTTONDOWN_API_TOKEN: str | None = None
-
-    # Logging
-    LOG_LEVEL: int = logging.WARNING
-
-    # 1Password secret references
-    # Format: op://vault/item/field
-    _SECRET_REFS = {
-        "SECRET_KEY": "op://alexkaufman.live/prod_site/secret_key",
-        "DATABASE": "op://alexkaufman.live/prod_site/database",
-        "GITHUB_WEBHOOK_SECRET": "op://alexkaufman.live/github-webhook/secret",
-        "BUTTONDOWN_API_TOKEN": "op://alexkaufman.live/buttondown/api-token",
-    }
-
-    @classmethod
-    async def _load_secrets_async(cls) -> dict:
-        """Load secrets from 1Password asynchronously."""
-        token = os.getenv("OP_SERVICE_ACCOUNT_TOKEN")
-        if not token:
-            print("Warning: OP_SERVICE_ACCOUNT_TOKEN not set, using default values")
-            return {}
-
-        try:
-            client = await Client.authenticate(
-                auth=token,
-                integration_name="alexkaufman.live",
-                integration_version="v1.0.0",
-            )
-
-            secrets = {}
-            for key, ref in cls._SECRET_REFS.items():
-                try:
-                    value = await client.secrets.resolve(ref)
-                    secrets[key] = value
-                except Exception as e:
-                    print(f"Warning: Could not load {key} from 1Password: {e}")
-
-            return secrets
-
-        except Exception as e:
-            print(f"Error authenticating with 1Password: {e}")
-            return {}
-
-    @classmethod
-    def load_secrets(cls) -> None:
-        """Load secrets from 1Password synchronously."""
-        try:
-            secrets = asyncio.run(cls._load_secrets_async())
-
-            # Update class attributes with loaded secrets
-            for key, value in secrets.items():
-                setattr(cls, key, value)
-
-            print(f"Loaded {len(secrets)} secrets from 1Password")
-
-        except Exception as e:
-            print(f"Error loading secrets: {e}")
-            print("Using default configuration values")
+    def __init__(self):
+        self.database = "alexkaufmanlive.sqlite"
+        self.secret_key = "dev-secret-key-not-for-production"
+        self.github_webhook_secret = None
+        self.buttondown_api_token = None
+        self.log_level = logging.DEBUG
 
 
-# Determine which config to use based on environment variable
-# Default to dev for safety
-environment = os.getenv("FLASK_ENV", "development")
+@dataclass
+class ProdConfig(Config):
+    """Production configuration loaded from environment variables."""
 
-if environment == "production":
-    Config = ProdConfig
-    Config.load_secrets()
-else:
-    Config = DevConfig
+    def __init__(self):
+        secrets = asyncio.run(_load_secrets_async())
+        self.database = secrets["DATABASE"]
+        self.secret_key = secrets["SECRET_KEY"]
+        self.github_webhook_secret = secrets["GITHUB_WEBHOOK_SECRET"]
+        self.buttondown_api_token = secrets["BUTTONDOWN_API_TOKEN"]
+        self.log_level = logging.WARNING
+
+
+async def _load_secrets_async() -> dict[str, str]:
+    """Load secrets from 1Password asynchronously."""
+    token = os.getenv("OP_SERVICE_ACCOUNT_TOKEN")
+    if not token:
+        raise ValueError("OP_SERVICE_ACCOUNT_TOKEN not set.")
+
+    client = await Client.authenticate(
+        auth=token,
+        integration_name="alexkaufman.live",
+        integration_version="v1.0.0",
+    )
+
+    secrets = {}
+    for key, ref in SECRET_REFS.items():
+        value = await client.secrets.resolve(ref)
+        secrets[key] = value
+
+    print(f"Loaded {len(secrets)} secrets from 1password")
+    return secrets

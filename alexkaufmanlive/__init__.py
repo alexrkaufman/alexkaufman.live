@@ -15,7 +15,7 @@ site_metadata = {
 }
 
 
-def create_app(test_config=None):
+def create_app(config: Config):
     """Create and configure the Flask application."""
     app = Flask(__name__, instance_relative_config=True, static_folder="content/static")
 
@@ -24,19 +24,12 @@ def create_app(test_config=None):
 
     # Load configuration
     app.config.from_mapping(
-        SECRET_KEY=Config.SECRET_KEY,
-        DATABASE=os.path.join(app.instance_path, Config.DATABASE),
-        GITHUB_WEBHOOK_SECRET=Config.GITHUB_WEBHOOK_SECRET,
-        BUTTONDOWN_API_TOKEN=Config.BUTTONDOWN_API_TOKEN,
+        SECRET_KEY=config.secret_key,
+        DATABASE=os.path.join(app.instance_path, config.database),
+        GITHUB_WEBHOOK_SECRET=config.github_webhook_secret,
+        BUTTONDOWN_API_TOKEN=config.buttondown_api_token,
     )
-    app.logger.setLevel(Config.LOG_LEVEL)
-
-    if test_config is None:
-        # Load instance config if it exists (can override 1Password values)
-        app.config.from_pyfile("config.py", silent=True)
-    else:
-        # Load test config
-        app.config.from_mapping(test_config)
+    app.logger.setLevel(config.log_level)
 
     # Ensure instance folder exists
     try:
