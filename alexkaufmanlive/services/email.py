@@ -1,6 +1,7 @@
 """Email subscription service."""
 
 import requests
+from email_validator import EmailNotValidError, validate_email
 
 
 def subscribe_to_buttondown(
@@ -19,6 +20,13 @@ def subscribe_to_buttondown(
     """
     if not email:
         return False, "Email is required", 400
+
+    # Validate email format
+    try:
+        valid = validate_email(email, check_deliverability=False)
+        email = valid.normalized
+    except EmailNotValidError as e:
+        return False, f"Invalid email address: {str(e)}", 400
 
     if not api_token:
         return False, "Buttondown API Token not set.", 500
