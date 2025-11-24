@@ -21,8 +21,10 @@ def create_app():
     app = Flask(__name__, instance_relative_config=True, static_folder="content/static")
 
     if os.getenv("FLASK_ENV") == "production":
+        print("loaded ProdConfig")
         config = ProdConfig()
     else:
+        print("loaded DevConfig")
         config = DevConfig()
 
     # Disable auto-escaping since all content is controlled by site owner
