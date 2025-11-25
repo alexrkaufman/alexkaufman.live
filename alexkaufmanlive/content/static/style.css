@@ -215,10 +215,8 @@ td {
 
 .home {
     .social-media {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        white-space: nowrap;
-        padding: 0 0.5em;
+        display: flex;
+        justify-content: space-evenly;
     }
 }
 
@@ -361,7 +359,12 @@ td {
     }
 
     .home .social-media {
+        display: grid;
         grid-template-columns: 1fr;
+    }
+
+    .social-media-item {
+        justify-self: center;
     }
 
     .show-head {
