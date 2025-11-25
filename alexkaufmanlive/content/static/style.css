@@ -150,7 +150,7 @@ footer {
     background: var(--heading-color);
     color: var(--background-color);
     display: inline-block;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .inline {
