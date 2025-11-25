@@ -70,7 +70,7 @@ a:hover {
 }
 
 main {
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 20px;
     padding: 30px;
     border: 1px solid var(--accent-color-1);
@@ -79,6 +79,10 @@ main {
 
 nav a {
     margin-right: 8px;
+}
+
+nav p {
+    margin: 0;
 }
 
 button {
