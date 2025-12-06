@@ -11,9 +11,9 @@ meta:
 
 {{ event_button(meta.event_link) }}
 
-Binghamton, NY
+{{ meta.city }}, {{ meta.state }}
 
-Saturday August 23nd 8 p.m.
+Saturday December 13nd 8:00 p.m.
 
 ## Secret Location
 
