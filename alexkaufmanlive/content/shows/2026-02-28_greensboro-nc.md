@@ -1,5 +1,5 @@
 ---
-title: Alex Kaufman and Serena Thiel Headling The Box
+title: "The Idiot Box: Alex Kaufman and Serena Thiel"
 show_date: 2026-02-28
 redirect: https://www.eventbrite.com/e/alex-kaufman-and-serena-thiel-headline-the-box-tickets-1734415135359
 meta:
@@ -9,4 +9,4 @@ meta:
   event_link: https://www.eventbrite.com/e/alex-kaufman-and-serena-thiel-headline-the-box-tickets-1734415135359
 ---
 
-headlining greensboro show
+coheadlining greensboro show
