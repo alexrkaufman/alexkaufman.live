@@ -379,7 +379,6 @@ td {
     }
     main {
         padding: 20px;
-        margin-top: 30px;
         margin-bottom: 10px;
     }
 
@@ -436,5 +435,6 @@ td {
     }
     .title h1 {
         font-size: 8rem;
+        margin-bottom: -1rem;
     }
 }
