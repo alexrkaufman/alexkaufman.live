@@ -8,6 +8,8 @@
 
 {{ show_list(upcoming_shows) }}
 
+{{ email_list_cta() }}
+
 # About
 
 <div class="about">
@@ -19,10 +21,6 @@ Alex has featured for Kyle Kinane, Sean Patton, and more, and performed at festi
 During undergrad he founded the now iconic Bob's Comedy Jive and during grad school started the production company Bone Dry Comedy. An accomplished producer, Alex brought dozens of headliners to perform in cities all over Montana including Amy Miller, Billy Wayne Davis, and Kate Willett.
 
 </div>
-
-## Join my email list
-
-{{ email_list_cta() }}
 
 ## Social Media
 
