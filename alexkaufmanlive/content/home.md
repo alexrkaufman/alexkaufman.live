@@ -22,7 +22,7 @@ During undergrad he founded the now iconic Bob's Comedy Jive and during grad sch
 
 </div>
 
-## Social Media
+# Social Media
 
 <div class="social-media">
 <div class="social-media-item">
