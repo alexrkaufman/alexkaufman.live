@@ -1,12 +1,12 @@
 ---
 title: "Dont Tell Comedy"
-show_date: 2025-12-13
-redirect: https://www.donttellcomedy.com/shows/bozeman-16290/
+show_date: 2026-01-09
+redirect: https://www.donttellcomedy.com/shows/missoula-16941/
 meta:
-  city: Bozeman
+  city: Missoula
   state: MT
   show_time: 8:00pm
-  event_link: https://www.donttellcomedy.com/shows/bozeman-16290/
+  event_link: https://www.donttellcomedy.com/shows/missoula-16941/
 ---
 
 {{ event_button(meta.event_link) }}
