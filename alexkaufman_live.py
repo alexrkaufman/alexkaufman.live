@@ -1,3 +1,5 @@
+#! /usr/bin/env python
+
 from dotenv import load_dotenv
 
 from alexkaufmanlive import create_app
