@@ -10,7 +10,7 @@ from flask import (
 from .config import DevConfig, ProdConfig
 
 site_metadata = {
-    "site_name": "alexkaufman.live",
+    "site_name": "Alex Kaufman",
     "tagline": "standup comic/former physicist",
 }
 

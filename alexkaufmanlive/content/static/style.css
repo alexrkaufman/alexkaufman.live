@@ -1,14 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap");
+@font-face {
+    font-family: "Bootzy Condensed";
+    src: local("Trickster"), url("/static/bootzy_condensed_tm-webfont.woff2");
+}
 
 :root {
     --width: 720px;
-    --font-main: "Fira Code", monospace;
-    --font-secondary: "Fira Code", monospace;
+    --font-main: "Space Grotesk";
+    --font-secondary: "Bootzy Condensed";
     --font-scale: 1em;
-    --background-color: #17161e;
+    --background-color: #171419;
+    /* --background-color: #170c01; */
     --heading-color: #ff9549;
-    --text-color: #ff9549;
-    --link-color: #ff9549;
+    --accent-color-1: #ff9549;
+    --text-color: #fff7eb;
+    --link-color: #fff7eb;
     --visited-color: #bc8d6b;
     --code-background-color: #bc8d6b;
     --code-color: #17161e;
@@ -16,7 +23,7 @@
 }
 
 body {
-    font-family: var(--font-secondary);
+    font-family: var(--font-main);
     font-size: var(--font-scale);
     margin: auto;
     padding: 20px;
@@ -29,6 +36,10 @@ body {
     color: var(--text-color);
 }
 
+p {
+    font-weight: 300;
+}
+
 h1,
 h2,
 h3,
@@ -37,6 +48,20 @@ h5,
 h6 {
     font-family: var(--font-main);
     color: var(--heading-color);
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 500;
 }
 
 a {
@@ -49,24 +74,23 @@ a:hover {
 }
 
 main {
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 20px;
     padding: 30px;
-    border: 1px solid var(--link-color);
-    text-wrap: balance;
+    border: 1px solid var(--accent-color-1);
+    text-wrap: auto;
 }
 
 nav a {
     margin-right: 8px;
 }
 
-strong,
-b {
-    color: var(--heading-color);
+nav p {
+    margin: 0;
 }
 
 button {
-    font-family: var(--font-secondary);
+    font-family: var(--font-main);
     font-size: 1em;
     padding: 0.5em 1em;
     color: var(--background-color);
@@ -117,6 +141,11 @@ blockquote {
 footer {
     text-align: center;
     opacity: 0.8;
+    color: var(--text-color);
+}
+
+header {
+    text-align: center;
 }
 
 .title:hover {
@@ -124,12 +153,14 @@ footer {
 }
 
 .title h1 {
-    font-size: 1em;
-    padding: 5px 10px;
-    background: var(--heading-color);
-    color: var(--background-color);
-    display: inline-block;
-    font-weight: 400;
+    font-family: var(--font-secondary);
+    font-size: 13rem;
+    color: var(--heading-color);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    line-height: 1em;
+    margin-bottom: -2rem;
 }
 
 .inline {
@@ -189,6 +220,10 @@ td {
 .shows span:has(time),
 .post p:has(time) {
     display: none;
+}
+
+.shows h1 {
+    margin-top: 0;
 }
 
 .gallery {
@@ -319,7 +354,7 @@ td {
     background-color: var(--background-color);
     border: 1px solid var(--heading-color);
     color: var(--text-color);
-    font-family: var(--font-secondary);
+    font-family: var(--font-main);
 }
 
 .modal-buttons {
@@ -333,9 +368,14 @@ td {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    font-weight: 600;
+    font-size: 1.2rem;
 }
 
 @media only screen and (max-width: 767px) {
+    body {
+        padding: 10px;
+    }
     main {
         padding: 20px;
         margin-top: 30px;
