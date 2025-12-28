@@ -42,17 +42,17 @@ During undergrad he founded the now iconic Bob's Comedy Jive and during grad sch
 </div>
 </div>
 
-# Press
-
-- [Bone Dry is making Montana's comedy desert bloom](https://billingsgazette.com/news/local/bone-dry-is-making-montanas-comedy-desert-bloom/article_2f6db7ca-c365-11ed-93d6-2b30163b139b.html)
-
-- [From Physics to... Comedy?](https://www.pugetsound.edu/stories/physics-comedy)
-
 # Clips
 
 - [7 Minute Set](https://vimeo.com/872317945)
 
 - [25 Minute Set](https://vimeo.com/869382083/96a51ff56f)
+
+# Press
+
+- [Bone Dry is making Montana's comedy desert bloom](https://billingsgazette.com/news/local/bone-dry-is-making-montanas-comedy-desert-bloom/article_2f6db7ca-c365-11ed-93d6-2b30163b139b.html)
+
+- [From Physics to... Comedy?](https://www.pugetsound.edu/stories/physics-comedy)
 
 # Photos
 
