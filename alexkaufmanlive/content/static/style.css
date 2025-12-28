@@ -435,5 +435,6 @@ td {
     }
     .title h1 {
         font-size: 24vw;
+        margin-bottom: 1rem;
     }
 }
