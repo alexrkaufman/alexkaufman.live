@@ -163,8 +163,8 @@ header {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5rem;
-    line-height: 1em;
-    margin-bottom: -2rem;
+    margin-bottom: 0;
+    line-height: 0.8;
 }
 
 .inline {
@@ -438,7 +438,6 @@ td {
         }
     }
     .title h1 {
-        font-size: 24vw;
-        margin-bottom: 1rem;
+        font-size: 26vw;
     }
 }
