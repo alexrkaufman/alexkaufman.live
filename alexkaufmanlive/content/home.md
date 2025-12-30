@@ -44,7 +44,7 @@ During undergrad he founded the now iconic Bob's Comedy Jive and during grad sch
 
 # Clips
 
-- [7 Minute Set](https://vimeo.com/872317945)
+- [5 Minute Set](https://youtu.be/AVh3TF2xn3Q)
 
 - [25 Minute Set](https://vimeo.com/869382083/96a51ff56f)
 
