@@ -94,6 +94,25 @@ def sitemap():
     return response
 
 
+@bp.route("/contact/")
+def contact_page():
+    """Builds the contact page of the site."""
+    db = get_db()
+    home_path = pathlib.Path(current_app.root_path) / "content/contact.md"
+
+    contactpage = frontmatter.load(str(home_path))
+
+    content = render_page(
+        contactpage.content,
+        show_list=get_template_attribute("parts.jinja2", "show_list"),
+        email_list_cta=get_template_attribute("parts.jinja2", "email_list_cta"),
+    )
+
+    return render_template(
+        "base.jinja2", content=content, title="alexkaufman.live", page_class="home"
+    )
+
+
 @bp.route("/blog/")
 def blog_redirect():
     """Redirect to external blog."""
