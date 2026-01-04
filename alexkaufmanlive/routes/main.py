@@ -18,7 +18,7 @@ from flask import (
 from flask.helpers import redirect
 
 from ..db import get_db
-from ..services.email import subscribe_to_buttondown
+from ..services.email import bonedry_optin, subscribe_to_buttondown
 from ..services.markdown import render_page
 
 bp = Blueprint("main", __name__)
@@ -176,3 +176,21 @@ def git_update():
     except Exception as e:
         current_app.logger.error(f"Deployment error: {str(e)}")
         return jsonify({"error": str(e)}), 500
+
+
+@bp.route("/api/bonedry_optin/<id>", methods=["GET"])
+def bonedryoptin(id):
+    success, message, status_code = bonedry_optin(
+        id, api_token=current_app.config.get("BUTTONDOWN_API_TOKEN")
+    )
+    if success:
+        current_app.logger.info("opt in worked")
+    else:
+        current_app.logger.error("Opt In did now work")
+
+    return render_template(
+        "base.jinja2",
+        content="You have been opted in. Welcome to the club!",
+        title="alexkaufman.live",
+        page_class="home",
+    )

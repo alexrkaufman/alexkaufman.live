@@ -60,3 +60,32 @@ def subscribe_to_buttondown(
         return False, "Network error occurred", 500
     except Exception:
         return False, "An error occurred", 500
+
+
+def bonedry_optin(id, api_token):
+    if not api_token:
+        return False, "Buttondown API Token not set.", 500
+
+    # Make request to Buttondown API
+    url = f"https://api.buttondown.com/v1/subscribers/{id}"
+    headers = {
+        "Authorization": f"Token {api_token}",
+    }
+
+    try:
+        response = requests.get(
+            url,
+            headers=headers,
+            timeout=10,
+            json={"tags": ["Bone Dry Comedy", "optin"]},
+        )
+
+        if response.status_code == 201:
+            return True, "Successfully subscribed!", 201
+        else:
+            return False, "Failed to subscribe", 400
+
+    except requests.RequestException:
+        return False, "Network error occurred", 500
+    except Exception:
+        return False, "An error occurred", 500
