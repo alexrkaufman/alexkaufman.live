@@ -186,7 +186,7 @@ def bonedryoptin(id):
     if success:
         current_app.logger.info("opt in worked")
     else:
-        current_app.logger.error("Opt In did now work")
+        current_app.logger.error(f"Opt In did not work, {status_code}: {message}")
 
     return render_template(
         "base.jinja2",
