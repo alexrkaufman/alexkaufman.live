@@ -73,7 +73,7 @@ def bonedry_optin(id, api_token):
     }
 
     try:
-        response = requests.get(
+        response = requests.patch(
             url,
             headers=headers,
             timeout=10,
