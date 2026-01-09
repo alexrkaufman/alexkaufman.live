@@ -178,7 +178,7 @@ def git_update():
         return jsonify({"error": str(e)}), 500
 
 
-@bp.route("/api/bonedry_optin/<id>", methods=["GET"])
+@bp.route("/api/emailoptin/<id>", methods=["GET"])
 def bonedryoptin(id):
     success, message, status_code = bonedry_optin(
         id, api_token=current_app.config.get("BUTTONDOWN_API_TOKEN")
