@@ -36,7 +36,7 @@ def index():
         (
             "SELECT id, title, show_date, link, meta"
             " FROM shows"
-            " WHERE show_date >= CURRENT_DATE"
+            " WHERE show_date >= date('now', 'localtime')"
             " ORDER BY show_date ASC"
         )
     ).fetchall()
@@ -46,7 +46,7 @@ def index():
         (
             "SELECT id, title, show_date, link, meta"
             " FROM shows"
-            " WHERE show_date < CURRENT_DATE"
+            " WHERE show_date < date('now', 'localtime')"
             " ORDER BY show_date DESC"
             " LIMIT ? OFFSET ?"
         ),
