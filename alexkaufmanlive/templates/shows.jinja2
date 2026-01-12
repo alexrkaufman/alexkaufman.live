@@ -2,8 +2,10 @@
 {% block title %} shows | {{ site_name }} {% endblock %}
 {% block main %}
 
+    {% if not has_prev %}
     <h1> Upcoming Shows </h1>
     {{ show_list(upcoming_shows) }}
+    {% endif %}
 
     <h1> Past Shows {% if has_prev %}(page {{page}}){% endif %} </h1>
     {{ show_list(past_shows) }}
