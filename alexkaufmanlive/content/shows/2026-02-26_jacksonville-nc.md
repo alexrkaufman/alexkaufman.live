@@ -1,10 +1,9 @@
 ---
-title: "Alex Kaufman and Serena Thiel"
+title: "The Playhouse: Alex Kaufman and Serena Thiel"
 show_date: 2026-02-26
 meta:
   city: Jacksonville
   state: NC
-  show_time: 8:00pm
 ---
 
-coheadlining greensboro show
+more info coming soon! Alex Kaufman and Serena Thiel co-headline The Jacksonville playhouse.
