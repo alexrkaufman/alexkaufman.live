@@ -3,7 +3,6 @@
 ## Booking Inquiries
 
 For booking inquiries, please email:
-
 **[alexkaufmancomedy@gmail.com](mailto:alexkaufmancomedy@gmail.com)**
 
 Available for:
