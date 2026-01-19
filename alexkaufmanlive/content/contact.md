@@ -4,7 +4,7 @@
 
 For booking inquiries, please email:
 
-**[alex@alexkaufman.live](mailto:alex@alexkaufman.live)**
+**[alexkaufmancomedy@gmail.com](mailto:alexkaufmancomedy@gmail.com)**
 
 Available for:
 
